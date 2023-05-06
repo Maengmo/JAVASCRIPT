@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        /*
+
+            JavaScript의 자료형
+
+            1. number
+                - 숫자형(정수, 실수)
+
+            2. String
+                - 문자, 문자열
+
+            3. boolean
+                - 논리형
+            
+            4. object
+                - 객체형
+                - JavaScript에는 클래스가 없다. 하지만 객체는 있다.
+                - JavaScript에서 미리 정의 된 타입 객체는 있다. 개발자가 클래스는 선언할 수 없다.
+                - 자바 > 객체 지향 프로그래밍 언어
+                - 자바스크립트 > 객체 기반 프로그래밍 언어
+
+            5. 기타(=상수)
+                - a. null
+                - b. undefined
+                - c. NaN(Not a Number)
+
+            변수, 상수
+            - JavaScript는 변수의 타입이 없다.
+            - var 변수명;
+            - 변수는 모든 자료형의 데이터를 저장할 수 있다. (=자바의 Object 변수)
+
+
+        */
+
+        var num = 10;
+        var num2 = 3.14;
+        var name = "홍길동";
+        var name2 = '홍길동';
+        var flag = true;
+        var now = new Date();
+
+        console.log(num);
+
+        num = '안녕하세요. ';
+        console.log(num);
+
+        //JavaScript > MS > TypeScript
+        
+        //현재 변수나 상수의 자료형을 확인?
+        console.clear();
+
+        console.log(typeof 100);    //number
+        console.log(typeof 3.14);   //number
+        console.log(typeof num2); //number
+        
+        console.log(typeof "홍길동"); //String
+        console.log(typeof '홍길동'); //String
+        console.log(typeof name2); //String
+
+        console.log(typeof flag); //boolean
+
+        console.log(typeof new Date()); //object
+
+        console.log(typeof null); //object
+        console.log(typeof undefined); //undefined
+        console.log(typeof NaN); //number
+
+        //연산자
+        //- 자바와 동일
+
+        //제어문
+        //- 자바와 동일
+
+        // Java > Strong Type
+        // SQL > Week Type
+        // JavaScript > Week Type
+
+        console.log('10' +2); //102
+        console.log(2 + '10'); //102
+        console.log('10' * 2); //20
+
+        //문자 이스케이프
+        console.log('C:\\class\\client\\javascript');
+
+    </script>
+    
+</body>
+</html>
