@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    form > input {
+        display : block;
+        margin-bottom: 5px;
+        padding : 5px;
+    }
+</style>
+</head>
+<body>
+    
+    <h1>Event</h1>
+
+    <form name="form1">
+        <input type="text" name="txt1">
+        <input type="button" value="확인(정적이벤트)" name="btn1" onclick="window.document.form1.txt1.value='홍길동'; ">
+        <input type="button" value="확인(동적이벤트)" name="btn2">
+    </form>
+
+    <script>
+
+        /*
+        
+            Event
+            - 사건
+            - 객체(혹은 태그)에서 발생하는 사건
+            - 언제 발생할지 예측 불가능(시간)
+
+            JavaScript Event Handling
+            - 이벤트 등록(구현)
+            - 사건 처리 
+            - 언제 발생할지 예측 불가능한 사건에 대해 처리를 하고 싶다. > 언젠가 사건이 발생하면 처리하기 위한 코드를 미리 준비한다. > 사건과 연결 > 이벤트 처리, 이벤트 매핑, 이벤트 구현 등..
+
+            이벤트 등록
+            1. 정적
+                HTML 태그에 직접 적용
+            
+            2 동적
+                JAVASCRIPT 코드를 사용 
+
+        */
+        // window.document.form1.btn2.onclick = m1; //함수 포인터
+
+        // function m1() {
+        //     //코드 작성
+        //     window.document.form1.txt1.value = '아무개';
+        // }
+
+        var now = new Date();
+
+        if(now.getHours < 12) {
+            //오전
+            window.document.form1.btn2.onclick = m2;
+        } else {
+            //오후
+            window.document.form1.btn2.onclick = m3;
+        }
+
+        function m2() {
+            window.document.form1.txt1.value = '오전입니다';
+        }
+
+        function m3() {
+            window.document.form1.txt1.value = '오후입니다';
+        }
+    </script>
+</body>
+</html>

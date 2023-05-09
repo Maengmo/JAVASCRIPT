@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input, textarea {
+            display: block;
+            margin-bottom: 10px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>키 이벤트</h1>
+
+    <form name = "form1">
+        <input type="text" name="txt1" autocomplete="off">
+        <input type="text" name="txt2">
+        <textarea name="txt3"></textarea>
+    </form>
+
+    <script>
+
+        var txt1 = window.document.form1.txt1;
+        var txt2 = window.document.form1.txt2;
+        var txt3 = window.document.form1.txt3;
+
+        /*
+        
+            키 관련 이벤트
+            - onkeyXXX
+            - 포커스를 가지는 태그에서만 발생(텍스트 박스, 체크 박스 등)
+
+            요즘 키보드 > 연속입력(O)
+
+            평상 시 키 이벤트 > keydown
+            특별히 누른 키가 관련된 작업 > keyup
+
+            1. onkeydown
+                - 키를 눌렀을 때 발생
+                - 문자에 반응하는 이벤트(X) > 어떤 문자가 입력되었는지 중요(X)
+                - 물리키에 반응하는 이벤트 > 어떤 키를 눌렀는지 중요(O)
+                - 키보드에 존재하는 모든 키에 반응(****)
+                - 방금 입력한 문자는 필요없을 때 사용
+
+            2. onkeyup
+                - 키를 땟을 때 발생
+                - 방금 입력한 문자가 필요한 경우에 사용
+
+            3. onkeypress
+                - 키를 눌렀을 때 발생
+                - 문자에 반응하는 이벤트(O)
+                - 문자가 아닌 나머지 키에는 반응(X)
+        
+        */
+
+
+
+        txt1.onkeydown = m1;
+        txt1.onkeyup = m2;
+        txt1.onkeypress = m3;
+
+        function m1(evt) {
+            // console.log('keydown');
+
+            //event.keyCode
+            // console.log(event.keyCode);
+
+            console.log(evt.keyCode); //표준 방법
+
+            //방향키
+            //- 좌(37), 상(38), 우(39), 하(40)
+
+            if (evt.keyCode == 37) {
+                txt3.cols--;
+            } else if (evt.keyCode == 39) {
+                txt3.cols++;
+            } else if (evt.keyCode == 38) {
+                txt3.rows--;
+            } else if (evt.keyCode == 40) {
+                txt3.rows++;
+            }
+
+            
+
+        }
+
+        function m2() {
+            // console.log('keyup');
+            //console.log(event.keyCode);
+           //txt2.value = txt1.value;
+            
+        }
+
+        function m3() {
+            // console.log('keypress');
+            // console.log(event.keyCode);
+        }
+    </script>
+
+</body>
+</html>

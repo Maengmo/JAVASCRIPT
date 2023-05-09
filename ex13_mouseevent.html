@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        textarea, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width : 500px;
+            height: 300px;
+            outline : none;
+            resize : none;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>마우스 관련 이벤트</h1>
+
+    <form name="form1">
+        <textarea name="txt1"></textarea>
+        <input type="button" value="확인" name="btn1">
+    </form>
+
+    <script>
+
+        var txt1 = window.document.form1.txt1;
+        var btn1 = window.document.form1.btn1;
+
+        /*
+
+            마우스 관련 이벤트
+            - onmouseXXX
+            1. onmouseover(= onmouseenter)
+                - 해당 객체의 영역에 마우스(커서)가 진입하는 순간 발생
+            2. onmouseout(= onmouseleave)
+                - 해당 객체의 영역에 마우스(커서)가 빠져나가는 순간 발생
+            3. onmousedown
+
+            4. onmouseup
+
+            5. onmousemove
+
+        */
+
+        function message(txt) {
+            var now = new Date();
+            txt1.value = txt + '-' + now.toLocaleDateString() + '\r\n' + txt1.value;
+        }
+
+        txt1.onmouseover = m1;
+        function m1() {
+            // message('mouseover');
+            // window.document.body.bgColor = 'gold';
+        }
+
+        txt1.onmouseout = m2;
+        function m2() {
+            // message('mouseout');
+            // window.document.body.bgColor = 'white';
+        }
+
+        txt1.onmousedown = m3;
+        function m3() {
+            // message('mousedown');
+            // window.document.body.bgColor = 'tomato';
+
+            //마우스 버튼
+            //event.buttons
+
+            // message(event.buttons);
+            // if (event.buttons ==2){
+            //     alert('오른쪽 마우스 버튼 클릭 금지!!');
+            // }
+
+            //마우스 커서 좌표
+            // 1. x, y
+            // - 문서 좌측 상단을 기준
+            // - 비표준(MS-IE)
+
+            // 2. clientX, clientY
+            // - 문서 좌측 상단을 기준
+            // - 표준 > 권장     
+            // - CSS > position : absolute;
+            
+            // 3. screenX, screenY
+            // - 모니터 좌측 상단을 기준
+
+            // 4. offsetX, offsetY
+            // 이벤트 객체의 좌측 상단을 기준
+            // 나 자신이 기준
+            // CSS > position : relative; 와 비슷함
+
+            // message(event.x + ',' + event.y);
+            // message(event.clientX + ',' + event.clientY);
+            // message(event.screenX + ',' + event.screenY);
+            // message(event.offsetX + ',' + event.offsetY);
+        }
+
+        txt1.onmouseup = m4;
+        function m4() {
+            // message('mouseup');
+            // window.document.body.bgColor = 'white';
+        }
+
+        var n = 1;
+
+        txt1.onmousemove = m5;
+        function m5() {
+            // message('mousemove - ' + n);
+            // n++;
+            // window.document.body.bgColor = 'white';
+        }
+
+
+        //onclick > 마우스 이벤트 X
+        btn1.onclick = m6;
+        function m6() {
+            // onclick 내에서는 마우스에 대한 정보를 알 수 없다.
+            //- 어떤 버튼? 좌표?
+            message('click' + event.buttons);
+        }
+
+
+
+    </script>
+
+</body>
+</html>
