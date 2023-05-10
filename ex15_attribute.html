@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>JavaScript로 HTML 태그 속성을 제어하기</h1>
+    
+    <form name="form1">
+        <input type="text" name="txt1" autocomplete="off">
+        <input type="button" value="확인" name="btn1">
+        <input type="button" value="끄기" name="btn2">
+    </form>
+
+    <script>
+
+        var txt1 = window.document.form1.txt1;
+        var btn1 = window.document.form1.btn1;
+        var btn2 = window.document.form1.btn2;
+
+        btn1.onclick = m1;
+        btn2.onclick = m2;
+
+        function m1() {
+
+            /*
+
+                JavaScript로 HTML의 속성 제어하기
+
+                1. HTML 태그의 대부분의 속성은 JavaScript의 프로퍼티로 제공된다.
+                    - HTML : <input type="text" size="10">
+                    - JavaScript : txt1.size
+                
+                2. HTML 태그의 속성명을 그대로 JavaScript 프로퍼티명으로 사용된다.
+
+                3. 대부분 읽기/쓰기 모두 지원한다. 일부 쓰기 or 읽기 전용이 있다.
+
+                4. 태그의 식별자 혹은 근본적인 속성은 조작하지 말것!
+
+                5. 
+
+            */
+
+            //<input type="text" size="10" value="" readonly>
+            // txt1.size = 100;
+            // txt1.value = '홍길동';
+            // alert(txt1.value);
+
+            // txt1.type = 'radio';
+            // txt1.name='txt3';
+
+            // txt1.readonly = true;
+            // txt1.readOnly = true;
+
+            window.document.body.bgColor = 'gold';
+
+        }
+
+        function m2() {
+
+            // alert(window.document.body.bgColor);
+
+            if ( window.document.body.bgColor != 'black') {
+                window.document.body.bgColor = 'black';
+                btn2.value = '켜기';
+            } else {
+                window.document.body.bgColor = 'white';
+                btn2.value = '끄기';
+            }
+            
+
+        }
+
+    </script>
+</body>
+</html>
