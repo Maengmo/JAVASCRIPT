@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>이미지</h1>
+
+    <img src="/html/images/catty01.png">
+    <img src="/html/images/catty02.png">
+    <img src="/html/images/catty03.png" name="cat3">
+    <img src="/html/images/catty04.png">
+    <img src="/html/images/catty05.png">
+
+    <h1>링크+앵커</h1>
+    <a href="#1" name="link1">링크1</a>
+    <a href="#2">링크2</a>
+    <a href="#3">링크3</a>
+    <a name="a1">앵커1</a>
+    <a name="a2">앵커2</a>
+
+    <h1>폼</h1>
+    <form name="form1">
+        <input type="text" name="txt1">
+        <input type="text" name="txt2">
+        <input type="text" name="txt3">
+    </form>
+
+    <script>
+        /*
+        
+            내장 배열(컬렉션)
+            - 문서 코드를 기반으로 자동 생성되는 배열을 제공한다.
+
+            1. window.document.images > 문서내의 모든 <img> 태그
+            2. window.document.links > 문서내의 모든 <a href=""> 태그
+            3. window.document.anchors > 문서내의 모든 <a name=""> 태그
+            4. window.document.forms > 문서내의 모든 <form> 태그
+            5. window.document.forms[index].elements > 특정 폼태그 내의 모든 입력태그
+            6. window.document.forms[index].select.options > <option> 태그
+            7. window.document.all > 문서상의 모든 태그 > 비표준(MS)
+
+        */
+
+
+        // console.log(document.images.length);
+
+        // for (var i=0; i<5; i++) {
+        //     console.log(document.images[i].src);
+        // }
+
+        // document.images[0].width = 300;
+        // document.images['cat3'].width = 300;
+
+        
+        // console.log(document.links.length);
+        // console.log(document.links[0].href);
+        // console.log(document.links['link1'].href);
+
+
+        // console.log(document.anchors.length);
+        // console.log(document.anchors[0].name]);
+        // console.log(document.anchors['a1'].name);
+
+
+        // document.form1
+        // document.forms[0]
+        // console.log(document.forms.length);
+
+        
+        // console.log(document.form1.elements.length);
+        // document.form1.txt1.value = "홍길동";
+        // document.form1.elements[1].value = "아무개";
+
+
+        // all > 문서상의 모든 <form> + 입력 태그 + 이미지 + 링크
+        // all > 문서상의 모든 태그
+        console.log(document.all.length); //25
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>이미지</h1>
+
+    <input type="button" value="확인" name="btn1">
+    <hr>
+    
+    <img src="images/cat01.jpg" name="cat1">
+    <hr>
+
+    <img src="images/cat02.jpg" name="cat2">
+    <hr>
+
+    <img src="images/switch_on.png" name="sw1">
+    <hr>
+
+    <img src="images/circle_icon01.png" name="icon">
+    <hr>
+
+    <img src="images/dog01.jpg" name="viewer">
+    <hr>
+
+    <img src="images/0.png" name="number">
+    <hr>
+
+    <script>
+
+        document.all.btn1.onclick = m1;
+
+
+        function m1() {
+            var cat1 = document.images['cat1'];
+
+            cat1.width = 500;
+
+            cat1.src = 'images/cat02.jpg';
+        } //m1
+
+        var cat2 = document.images['cat2'];
+
+        //롤오버 이미지
+        cat2.onmouseover = m2;
+        cat2.onmouseout = m3;
+
+        function m2() {
+            cat2.src = 'images/cat02.jpg';
+        }
+
+        function m3() {
+            cat2.src = 'images/cat01.jpg';
+        }
+
+        //name, id 식별자 > 직접 접근
+
+        //Toggle Button
+        document.images['sw1'].onclick = m4;
+
+        function m4() {
+
+            // http://127.0.0.1:5500/javascript/images/switch_off.png
+
+            if (document.images['sw1'].src.endsWith('on.png')) {
+                document.images['sw1'].src = 'images/switch_off.png';
+                document.body.bgColor = 'black';
+            } else {
+                document.images['sw1'].src = 'images/switch_on.png';
+                document.body.bgColor = 'white';
+            }
+        }
+
+        var icon = document.images['icon'];
+        var n=1;
+
+        // icon.onclick = m5;
+        document.body.onmousemove = m5;
+
+        function m5() {
+            n++;
+
+            if (n > 18) {
+                n = 1;
+            }
+
+            icon.src = 'images/circle_icon' + addZero(n) + '.png';
+        }
+
+        function addZero(n) {
+            if(n<10) {
+                return '0' +n;
+            }
+            return n;
+        }
+
+        //키이벤트 + 뷰어
+        var viewer = document.images['viewer'];
+        n = 1;
+
+        //전역 이벤트(window) > 화면상 모든곳에서 발생한다.
+        window.onkeydown = m6;
+
+        function m6() {
+
+            //좌(37), 우(39)
+            if(event.keyCode==37) {
+                n--;
+                if(n<1) {
+                    alert('처음 이미지입니다.');
+                    n=1;
+                    return;
+                }
+            }else if(event.keyCode==39) {
+                n++;
+                if(n>5) {
+                    alert('마지막 이미지입니다.');
+                    n=5;
+                    return;
+                }
+            }
+
+            viewer.src = 'images/dog0' + n + '.jpg';
+
+        }
+
+        var number = document.images['number'];
+
+        window.onkeydown = m7;
+
+        function m7() {
+
+            //상단 숫자키(48) or 우측 숫자패드(96)
+            // alert(event.keyCode); //숫자 확인
+
+            var no = event.keyCode - 48;
+            // alert(no);
+
+            number.src = '/html/images/' + no + '.png';
+        }
+
+
+    </script>
+
+</body>
+</html>
