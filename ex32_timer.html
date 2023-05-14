@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset {
+            border : 1px solid #777;
+            padding : 20px;
+            margin : 20px;
+            width : 300px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>타이머</h1>
+
+    <form name="form1">
+        <fieldset>
+            <input type="button" value="확인" name="btn1">
+            <input type="text" name="txt1">
+        </fieldset>
+        <fieldset>
+            <input type="button" value="확인" name="btn2">
+            <input type="text" name="txt2">
+        </fieldset>
+        <fieldset>
+            <input type="button" value="시작" name="btn3">
+            <input type="button" value="멈춤" name="btn4">
+            <input type="text" name="txt3">
+        </fieldset>
+        
+    </form>
+
+    <img src="images/catty01.png" name="cat">
+
+    <script>
+
+        /*
+
+            타이머, Timer
+            
+            타이머 생성 
+            1. number setTimeout(함수, 시간)
+                - 1회성 타이머
+
+            2. number setInterval(함수, 시간)
+                - 반복성 타이머
+
+            타이머 종료
+            1. clearTimeout(id)
+
+            2. clearInterval(id)
+
+        */
+
+        var btn1 = document.form1.btn1;
+        var btn2 = document.form1.btn2;
+        var btn3 = document.form1.btn3;
+        var btn4 = document.form1.btn4;
+
+        var txt1 = document.form1.txt1;
+        var txt2 = document.form1.txt2;
+        var txt3 = document.form1.txt3;
+
+        btn1.onclick = m1;
+        function m1() {
+            //3초 후에 f1을 호출해라!
+            // setTimeout(f1, 1000);
+            f1();
+        }
+
+        function f1() {
+            // alert('따르릉');
+            txt1.value = (new Date()).toLocaleTimeString();
+
+            setTimeout(f1, 1000); //재귀 호출 + 무한 루프
+        }
+
+        btn2.onclick = m2;
+        function m2() {
+            setInterval(f2, 1000);
+        }
+
+        function f2() {
+            // alert('띵동~');
+            txt2.value = (new Date()).toLocaleTimeString();
+        }
+
+        var n = 1;
+        var timer = 0;
+        var timerlist = [];
+
+        btn3.onclick = m3;
+        function m3() {
+
+            // if(timer == 0) {
+            //     timer = setInterval(f3, 10);
+            //     console.log(timer);
+            // }
+            
+            timer = setInterval(f3, 10);
+            timerlist.push(timer);
+
+        }
+
+        function f3() {
+            txt3.value = n;
+            n++;
+        }
+
+        btn4.onclick = m4;
+        function m4() {
+            // clearInterval(timer);
+            // // n = 0;
+            // timer = 0;
+
+            //순차적으로 중지
+            // clearInterval(timerlist.pop());
+
+            //일괄 중지
+            for (var i=0; i<timerlist.length; i++) {
+                clearInterval(timerlist[i]);
+            }
+        }
+
+        var cat = document.images['cat'];
+        var m = 1;
+        var ctimer = 0;
+
+        cat.onclick = m5;
+
+        function m5() {
+            if(ctimer==0) {
+                ctimer = setInterval(f5, 100);
+            } else {
+                clearInterval(ctimer);
+                ctimer = 0;
+            }
+        }
+
+        function f5() {
+            m++;
+            if(m>9) m = 1;
+            cat.src = 'images/catty0' + m + '.png';
+        }
+
+    </script>
+
+    
+</body>
+</html>

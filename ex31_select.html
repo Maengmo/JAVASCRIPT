@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input[type=button] {
+            display: block;
+            margin-bottom : 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>셀렉트 박스</h1>
+
+    <select name="sel1" multiple size="7">
+        <option value="a1">강아지</option>
+        <option value="a2">고양이</option>
+        <option value="a3">돼지</option>
+        <option value="a4">닭</option>
+        <option value="a5">사자</option>
+        <option value="a6">호랑이</option>
+        <option value="a7">낙타</option>
+    </select>
+
+    <hr>
+
+    <input type="button" value="선택한 항목 확인하기" name="btn1">
+    <input type="button" value="선택한 항목 확인하기2" name="btn2">
+    <input type="button" value="항목 추가하기" name="btn3">
+    <input type="button" value="항목 삭제하기" name="btn4">
+    <input type="button" value="다중 선택 항목 확인하기" name="btn5">
+
+    <hr>
+
+    태어난 년도 : <select name="selyear"></select>
+    
+    <script>
+        
+        var sel1 = document.all.sel1;
+
+        document.all.btn1.onclick = m1;
+        document.all.btn2.onclick = m2;
+        document.all.btn3.onclick = m3;
+        document.all.btn4.onclick = m4;
+        document.all.btn5.onclick = m5;
+
+        function m1() {
+            //사용자가 어떤 <option>을 선택했는지?
+            
+            //읽기
+            // alert(sel1.value);
+
+            //쓰기
+            // sel1.value = '홍길동'; > 없는 value라 안됌
+            sel1.value = 'a3';
+        }
+
+        function m2() {
+
+            //프로퍼티
+            //1. HTML 속성을 그대로 똑같이 만들어 놓은 프로퍼티
+            //2. JavaScript가 독자적으로 만들어 놓은 프로퍼티
+
+            //읽기
+            // alert(sel1.selectedIndex);
+
+            //쓰기
+            sel1.selectedIndex = 2;
+
+        }
+
+        function m3() {
+            //동적으로 <option> 생성하기
+            //- <option value="a8">도마뱀</option>
+
+            //<option> 중복 검사
+            for (var i=0; i<sel1.options.length; i++) {
+                // console.log(sel1.options[i].text);
+                if(sel1.options[i].text == '도마뱀') {
+                    return;
+                }
+            }
+            
+            var op = new Option(); //<option></option> 태그 생성
+            op.value = 'a8';           // <option value="a8"></option>
+            op.text = '도마뱀';       // <option value="a8">도마뱀</option>
+
+            //<select> + <option>
+            sel1.options.add(op);
+
+
+        }
+        function m4() {
+            //<option> 삭제 > index shift 발생!!
+            //sel1.options.remove(3);
+
+            //선택한 동물 삭제하기
+            sel1.options.remove(sel1.selectedIndex);
+        }
+        function m5() {
+
+            //단일 선택
+            // alert(sel1.value);
+
+            // 읽기 
+            // for(var i=0; i<sel1.options.length; i++) {
+            //    // alert(sel1.options[i].selected);
+            //    if(sel1.options[i].selected) {
+            //     console.log(sel1.options[i].text, sel1.options[i].value);
+            //    }
+            // }
+
+            // 쓰기
+            sel1.options[0].selected = true;
+            sel1.options[1].selected = true;
+            sel1.options[5].selected = true;
+
+        }
+
+        var selyear = document.all.selyear;
+
+        //1960 ~ 2010
+        for(var i=1960; i<2010; i++) {        
+            var op = new Option(i+'년', i);
+            selyear.options.add(op);
+        }
+
+        selyear.value = '1990';
+
+    </script>
+</body>
+</html>

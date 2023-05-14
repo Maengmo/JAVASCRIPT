@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <input tpye="text" name="txt1">
+
+    <script>
+
+        /*
+
+            1. Core
+            2. ~BOM
+            3. Core
+            4. DOM
+            
+
+        */
+
+        /*
+
+            변수 선언하기
+            1. var
+                - BOM ~ DOM ~ ES6
+                - function-scoped
+                - 중복 선언 가능
+                - 상수 선언 불가능
+
+            2. let
+                - ES6
+                - block-scoped
+                - 중복 선언 불가능
+                - 변수
+
+            3. const
+                - ES6
+                - block-scoped
+                - 중복 선언 불가능
+                - 상수(자바의 final 변수와 같은 느낌)
+
+        */
+
+        // var a = 10;
+        // console.log(a);
+
+        // var a = 20;
+        // console.log(a);
+
+        // var list = [10, 20, 30];
+
+        // // 향상된 for문(x) > 객체가 가지는 프로퍼티를 탐색하는 루프
+        // for (var n in list) {
+        //     console.log(n);
+        // }
+
+        // console.log('------------------------');
+
+        // for(var p in screen) {
+        //     console.log(p);
+        // }
+
+        // console.log('------------------------');
+
+        // for(var p in document.all.txt1) {
+        //     console.log(p);
+                // m++
+        // }
+
+        //******* 전역 멤버(전역변수, 함수)는 자동으로 window 객체의 멤버(프로퍼티)가 된다.
+
+        // var a = 10; //a : 전역 변수
+        // var a = 20;
+
+        // for (var p in window) { //p : 전역 변수
+        //     console.log(p);
+        // }
+
+
+        let b = 20;
+        console.log(b);
+
+        // let b = 30;
+
+        if (true) {
+            var c = 30; // 전역 변수
+            let d = 40; // 지역 변수
+        }
+
+        console.log(c);
+        // console.log(d);
+
+        for(var i=0; i<5; i++) { //전역 변수
+
+        }
+        console.log(i);
+
+        for(let j=0; j<5; j++) {
+
+        }
+        // console.log(j);
+
+        const e = 10;
+        e=20; //상수는 값을 절대 변경 불가능 
+
+    </script>
+    
+</body>
+</html>
