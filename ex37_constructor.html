@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <!--  -->
+    <button name="btn1" type="button">버튼</button>
+
+    <script>
+    
+        //생성자 함수
+        //- 멤버 초기화
+        //- 같은 구조(*)의 객체를 생성하는 것이 목표!
+
+        const m1 = {
+            name : '홍길동',
+            age : 20
+        };
+
+        const m2 = {
+            name : '아무개',
+            age : 22
+        };
+
+        //생성자 함수의 이름은 대문자로 시작한다.(관습) > 일반 함수와 구분하기 위해서
+        function User(name, age) {
+            this.name = name;
+            this.age = age;
+            this.hello = function() {
+                console.log('내 이름은 ' + this.name);
+            }
+        }
+
+        //생성자 함수를 일반 함수처럼 호출하지 않는다!!
+        // User('홍길동', 20);
+
+        const m3 = new User('홍길동', 20);
+        console.log(m3);
+
+        //new > 빈객체를 생성!!
+        const m4 = {};
+
+        // User('홍길동', 20) > 왼쪽에서 new가 만든 빈 객체를 초기화 역할
+        m4.name = '홍길동';
+        m4.age = 20;
+
+        const m5 = new User('이순신', 25);
+        console.log(m5);
+
+        document.all.btn1.onclick = f2;
+        
+        function f2() {
+            //this == 버튼
+            //event.target == event.srcElement == this
+            alert(this.name);
+        };
+
+        function f1() {
+            //이 함수를 누가 호출했는지? 누가 소유주인지?
+            
+            //this == window객체
+            alert(this);
+        };
+
+        //전역 변수와 전역 함수는 무조건 Window 객체의 프로퍼티가 된다.
+        // f1();
+        // window.f1();
+
+        const now = new Date();
+        const list = []; //new Array();
+
+        console.log(typeof m5, m5.constructor.name); //object User
+        console.log(typeof now, now.constructor.name); //Object Date
+        console.log(typeof list, list.constructor.name);  //object Array
+
+    </script>
+</body>
+</html>

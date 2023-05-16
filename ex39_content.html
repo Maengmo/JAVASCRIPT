@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <!--  -->
+
+    <h1>Content</h1>
+
+    <input type="button" value="버튼1" id="btn1">
+    <input type="button" value="버튼2" id="btn2">
+
+    <hr>
+
+    <div id="div1">영역1</div>
+    <div id="div2">영역2</div>
+
+    <script>
+
+        // BOM, DOM > 태그 조작
+        //1. 태그 검색(BOM, DOM)
+        //2. 속성 조작(BOM, DOM)
+        //3. PCDATA 조작(DOM) > innerText, textContent
+    
+        /*
+
+             콘텐츠 조작
+
+            시작 태그와 끝 태그 사이의 내용물 조작
+
+            1. innerText
+                - 시작 태그와 끝 태그 사이의 문자열 읽기/쓰기 프로퍼티
+                - 비표준(MS)
+                - 태그를 인식 X
+
+            2. innerHTML
+                - 시작 태그와 끝 태그 사이의 문자열 읽기/쓰기 프로퍼티
+                - 태그 인식 O
+
+            3. outerText(사용 안함)
+            
+            4. outerHTML(사용 안함)
+
+            5. textContent
+                - 시작 태그와 끝 태그 사이의 문자열 읽기/쓰기 프로퍼티
+                - 표준
+
+        */
+
+        const btn1 = document.getElementById('btn1');
+        const div1 = document.getElementById('div1');
+
+        btn1.onclick = function() {
+
+            // txt1.value
+            // txt1.size
+            // txt1.readOnly
+
+            // div1.?
+            // div1.innerText ='홍길동';
+            // alert(div1.innerText);
+
+            // div1.innerText = '<i>홍길동</i>'; //결과는 똑같이 escape 되서 나옴.
+            
+            // div1.innerHTML = '<i>홍길동</i>';
+
+            // 동적으로 태그 생성하기
+            // div1.innerHTML = '<input type="text">';
+
+            // for(let i=0; i<10; i++) {
+            //     div1.innerHTML += '<input type="text"><br>';
+            // };
+
+            div1.innerHTML += '<img src="images/catty0' + n + '.png">';
+            n++;
+
+            if(n>9) n =1;
+        };
+
+        let n = 1;
+
+        document.getElementById('btn2').onclick = function() {
+            div1.innerHTML = '';
+        };
+
+    </script>
+</body>
+</html>
