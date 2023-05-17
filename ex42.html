@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl1 {
+            border : 1px solid gray;
+            border-collapse: collapse;
+        }
+
+        #tbl1 td {
+            border : 1px solid gray;
+            width : 126px;
+            height: 126px;
+            /* font-size : 0; */
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+
+    <table id="tbl1">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+
+        let index = 0;
+        const list = document.getElementsByTagName('td');
+
+        list[index].bgColor = 'gold';
+
+        window.onkeydown = function() {
+
+            // list[index].bgColor = 'transparent';
+            for (let i=0; i<list.length; i++) {
+                list[i].bgColor = 'transparent';
+            }
+
+            if(event.keyCode == 39) {
+                //우측 방향키
+                index++;
+
+                //끝
+                if(index >= list.length) {
+                    index=0;
+                }
+            } else if (event.keyCode == 37) {
+                //좌측 방향키
+                index--;
+
+                //끝
+                if(index < 0) {
+                    index=list.length-1;
+                }
+            }
+
+            list[index].bgColor = 'gold';
+
+        };
+    
+    </script>
+</body>
+</html>

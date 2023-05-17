@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl1 {
+            border : 1px solid gray;
+            border-collapse: collapse;
+        }
+
+        #tbl1 td {
+            border : 1px solid gray;
+            width : 126px;
+            height: 126px;
+            /* font-size : 0; */
+        }
+
+        #tbl1 img {
+            display: block;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <!-- 마우스 오른쪽 메뉴가 뜨지 않게 하는 것-->
+    <!--  -->
+
+    <!-- table#tbl1>tr*5>td*5 -->
+    <table id="tbl1">
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+    <script>
+    
+        //<td> * 25 > 이벤트 추가 > 이미지 동적 추가
+
+        const list = document.getElementsByTagName('td');
+
+        for (let i=0; i<list.length; i++) {
+
+            list[i].onmousedown = function() {
+                //클릭한 <td>?
+                // event.target.bgColor = 'gold';
+
+                if(event.buttons == 1){
+                    event.target.innerHTML = '<img src="images/rect_icon01.png">';
+
+                } else if(event.buttons == 2) {
+                    event.target.innerHTML = '<img src="images/rect_icon02.png">';
+                }
+                
+                
+            }
+
+        }
+
+    </script>
+</body>
+</html>

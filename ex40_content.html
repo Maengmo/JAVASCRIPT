@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        fieldset { border: 1px solid #777; width: 200px;}
+        fieldset > * {display: block; margin-bottom: 10px;}
+
+        #tbl1 {
+            border: 1px solid gray;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #tbl1 td {
+            border: 1px solid gray;
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>테이블 생성하기</h1>
+
+    <fieldset>
+        <legend>행 x 열</legend>
+        <label>행: <select id="selrow"></select></label>
+        <label>열: <select id="selcolumn"></select></label>
+        <input type="button" value="만들기" id="btncreate">
+    </fieldset>
+
+    <table id="tbl1"></table>
+
+    <script>
+        
+        const selrow = document.getElementById('selrow');
+        const selcolumn = document.getElementById('selcolumn');
+        const btncreate = document.getElementById('btncreate');
+        const tbl1 = document.getElementById('tbl1');
+
+        //셀렉트 박스 초기화
+        for(let i=0; i<10; i++){
+    
+            //BOM
+            // const op = new Option();
+            // op.value = '';
+            // op.text = '';
+
+            //DOM
+            // selrow.innerHTML +='<option>i</option>';
+
+            selrow.options.add(new Option(i,i));
+            selcolumn.options.add(new Option(i,i));
+            
+        }
+
+
+        btncreate.onclick = function() {
+            
+            let temp = ''; //누적 변수
+
+            for (let i=0; i<selrow.value; i++){ //행 생성 <tr>
+
+                temp += '<tr>';
+
+                    for(let j=0; j<selcolumn.value; j++){ //열 생성<td>
+
+                        temp += '<td onclick="changeColor();">';
+                        temp += i +',' + j;
+                        temp += '</td>'
+                        
+                    }
+
+                temp += '</tr>';
+
+            }
+            tbl1.innerHTML = temp;
+        }
+    
+        function changeColor() {
+            event.target.bgColor = 'gold';
+        }
+    </script>
+</body>
+</html>
