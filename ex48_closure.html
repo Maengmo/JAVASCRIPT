@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+    <!--  -->
+
+    <input type="button" value="확인1" id="btn1">
+    <input type="button" value="확인2" id="btn2">
+
+    <script>
+
+        //기술 면접
+        //- 질의 응답
+        //- 질문 1개 > 답변 2~30초 ~ 1분 이내
+
+        /*
+
+            클로저, Closure
+            - 
+
+        */
+
+        function outer() {
+
+            //지역 변수 (outer)
+            let a = 10;
+            console.log('a', a);
+
+            //지역 함수(outer)
+            function inner() {
+                console.log('inner');
+
+                //지역 변수(inner)
+                let b = 20;
+                console.log('b', b);
+                console.log('a', a);
+            }
+
+            inner();
+            // console.log('b', b);
+            
+            //지역 함수
+            return function() {
+                //여기서 a가 찍힌다??
+                //- 지역 함수에서 밖의 상위 변수를 사용하는 구문 존재 > 상위 지역 변수 소멸(X) > 임시 공간에 살려둠. > 나중에 호출 위해서
+                console.log('return : '+ a);
+            };
+
+        }//outer
+
+        const result = outer();
+        result();
+
+        // inner(); > 불가능
+
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+
+        let num1 = 100;
+        
+        let num4 = 400; //전역 변수
+
+        //첫번째 버튼 클릭 > num1 = 200;
+        //두번째 버튼 클릭 > alert(num1);
+
+        btn1.onclick = function() {
+            
+            // num1 = 200;
+
+            let num2 = 100; //지역 변수
+            num2 = 200;
+
+            let num3 = 300; //지역 변수
+
+            btn2.onclick = function() {
+                // alert(num1);
+                alert(num2); //???
+            };
+
+        };
+    
+    </script>
+</body>
+</html>

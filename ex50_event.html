@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box { padding : 50px; }
+        #p1 { background-color: tomato;}
+        #p2 { background-color: gold;}
+        #p3 { background-color: dodgerblue;}
+    </style>
+</head>
+<body>
+    <!--  -->
+
+    <div id="p1" class="box">
+        <div id="p2" class = "box">
+            <div id="p3" class="box"></div>
+        </div>
+    </div>
+
+    <script>
+        
+        const p1 = document.getElementById('p1');
+        const p2 = document.getElementById('p2');
+        const p3 = document.getElementById('p3');
+
+        //이벤트 버블링(Event Bubbling)
+        // vs 이벤트 터널링(Event Tunneling, 이벤트 캡쳐링(Event Capturing)
+
+        //- 자바스크립트는 기본적으로 이벤트 버블링만 발생한다.
+        //- 단, 원하면 이벤트 터널링도 발생시킬 수 있다.
+
+        /*
+        p1.onclick = function() {
+            alert('빨강' + event.currentTarget.id);
+        };
+
+        p2.onclick = function() {
+            // alert('노랑' 
+            //     + event.target.id           // 유턴하는 객체 p3
+            //     + event.srcElement.id     // 유턴하는 객체 p3
+            //     + this.id);                     // onclick 객체 반환 p2
+            // alert(event.currentTarget.id); // this와 동일
+            event.cancelBubble = true;
+            alert('노랑' + event.currentTarget.id);
+        };
+
+        p3.onclick = function() {
+            alert('파랑' + event.currentTarget.id);
+            
+            //이벤트 버블링을 여기서 중단해라!!
+            // - 이벤트가 일어났다는 사실을 부모에게 알리지 말아라!
+            event.cancelBubble = true;
+        }
+
+        */
+
+        //이벤트 터널링 구현(내려가면서 알림을 줌)
+        p1.addEventListener('click', function() {
+            alert('빨강');
+        }, true);
+
+        p2.addEventListener('click', function() {
+            alert('노랑');
+        }, true);
+
+        p3.addEventListener('click', function() {
+            alert('파랑');
+        }, true);
+
+
+        //이벤트 버블링 구현
+        p1.addEventListener('click', function() {
+            alert('빨강');
+        });
+
+        p2.addEventListener('click', function() {
+            alert('노랑');
+        });
+
+        p3.addEventListener('click', function() {
+            alert('파랑');
+        });
+
+    </script>
+</body>
+</html>
