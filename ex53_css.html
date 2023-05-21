@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            background-color: gold;
+            width : 200px;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <h1>JavaScript + CSS</h1>
+
+    <input type="button" value="확인" id="btn">
+    <hr>
+    <div id="box" style="width:200px;">상자</div>
+
+    <h1>텍스트</h1>
+
+    <div id="tool">
+        <input type="button" value="  +  " id="btn1">
+        <input type="button" value="  -  " id="btn2">
+    </div>
+
+    <p id="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae esse cum saepe minus quibusdam dolorum sapiente, magni voluptatem assumenda rerum consectetur voluptas molestias ipsa eveniet praesentium earum voluptate numquam aspernatur, recusandae eligendi dicta. Consequuntur natus illum incidunt, ullam reiciendis quisquam vel doloribus possimus. Amet provident accusantium atque pariatur omnis sunt, eveniet officia ut repudiandae dignissimos nobis reprehenderit dolore at quidem repellat obcaecati. Natus tempore ab excepturi libero asperiores adipisci tenetur? Quam, velit culpa id, delectus fuga libero a aperiam dolorum temporibus eius perferendis? Corrupti, commodi quis! Similique culpa iure, aut assumenda dicta quia dolores placeat eaque distinctio reiciendis corrupti facere?</p>
+
+    <script>
+
+        const btn = document.getElementById('btn');
+        const box = document.getElementById('box');
+
+        btn.addEventListener('click', function() {
+
+            //JavaScript > CSS 조작?
+            //<div style='인라인'>
+
+            //BOM
+            // box.style = 'font-size : 2rem;';
+            //DOM
+            // box.setAttribute('style', 'font-size : 3rem;');
+
+            //관리 불편;; > 모든걸 문자열로 조작
+            // box.style = 'backgroud-color : black; color : white; font-size : 3rem;';
+
+            // box.style.color = 'blue';
+            // box.style['color'] = 'white';
+
+            // box.style.backgroundColor = 'black';
+            // box.style['background-color'] = 'black';
+
+            // box.style['font-size'] = '3rem';
+
+
+            //상자 너비 : 200px;
+            // box.style.width = '400px';
+
+            //누를때마다 조금씩 커지게(+50px);
+            // box.style.width = parseInt(box.style.width) + 50 + 'px'; 
+
+            //자바스크립트 > CSS로 정의된 속성값을 읽어오지 못한다. 단, 인라인 시트값으로 되어 있는 CSS는 읽어올 수 있다. 즉, 임베디드와 외부 스타일시트값을 읽어오지 못한다.
+            // alert(box.style.width); //200px(X), null(O)
+
+            //태그에 적용된 현재 서식을 읽어오는 방식 
+            // const list = window.getComputedStyle(box);
+            // alert(list.getPropertyValue('width'));
+
+
+            
+
+
+        });
+
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+        const content = document.getElementById('content');
+
+        let fontSize = 16; //16px;
+
+        btn1.addEventListener('click', function() {
+            fontSize +=1;
+            content.style.fontSize = fontSize + 'px';
+        });
+        
+        btn2.addEventListener('click', function() {
+            fontSize -=1;
+            content.style.fontSize = fontSize + 'px';
+        });
+
+    </script>
+</body>
+</html>

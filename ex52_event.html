@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #parent, #child {
+            border : 1px solid black;
+            padding : 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <div id="parent">
+        <div id="child">
+
+        </div>
+    </div>
+
+    <a href="https://naver.com" id="link1">네이버</a>
+    <hr>
+    <input type="text" id="txt1" style="ime-mode:inactive">
+
+
+    <script>
+        
+        //1. 이벤트 버블링 중단
+        //a. event.cancelBubble = true > 비표준(MS) > IE 전용
+        //b. event.stopPropagation();   > 표준
+
+        const p = document.getElementById('parent');
+        const c = document.getElementById('child');
+
+        p.onclick = function() { alert('부모'); };
+        c.onclick = function() { 
+            alert('자식');
+            // event.cancelBubble = true;
+            event.stopPropagation(); //이게 더 좋음.
+
+            //현재 브라우저에서 해당 문법을 지원 유무?
+            if (event.stopPropagation) {
+                //true : 현재 브라우저가 stopPropagation 함수 지원함.
+                event.stopPropagation();
+            } else {
+                //false : 현재 브라우저가 stopPropagation 함수 지원안함.
+                event.cancelBubble = true;
+            }
+
+        };
+
+
+        //2. 이벤트 중단
+        //a. return false;                  > 비표준(MS)
+        //b. event.preventDefault();    > 표준
+
+        const link1 = document.getElementById('link1');
+        const txt1 =document.getElementById('txt1');
+
+        //클릭 이벤트 > 페이지 이동(중단)
+        link1.onclick = function() {
+            // alert();
+            // return false;
+            event.preventDefault();
+        };
+
+        //keydown > 문자 반영(중단) > keyup(중단)
+        txt1.onkeydown = function() {
+            // return false;
+
+            if(event.keyCode >= 48 && event.keyCode <=57) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+    </script>
+</body>
+</html>
