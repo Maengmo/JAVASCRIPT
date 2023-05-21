@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+        .box {
+            position : absolute; left : 0; top : 0;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+
+
+    <script>
+
+        //화면 클릭 > 상자 생성 > 이동
+
+        const colors = ['bg-red', 'bg-yellow', 'bg-blue', 'bg-orange', 'bg-green'];
+
+        let index = 0;
+
+        window.onmousedown = function() {
+
+            // console.log(event.ctrlKey); //컨트롤 키를 누르고있는지 확인
+
+            if(event.buttons == 1 && !event.ctrlKey) {
+
+                //<div class="box"></div>
+                let box = document.createElement('div'); //<div></div>
+
+
+                box.classList.add('box'); //클래스 속성을 주는것 <div class="box"></div>
+                //box.classList.add('bg-red'); //<div class="box bg-red"></div>
+                box.classList.add(colors[index]);
+                index++;
+                if(index>= colors.length) index = 0;
+
+                box.style.left = event.clientX - 100 + 'px';
+                box.style.top = event.clientY - 100 + 'px';
+
+                document.body.appendChild(box);
+
+            } else if (event.buttons == 1 && event.ctrlKey) {
+
+                // if(event.target.nodeName == 'DIV') 
+                if(event.target.classList.contains('box')) {
+                    
+                    // document.body.removeChild(event.target);
+                    event.target.remove();
+
+                }
+
+            }
+
+        };//window
+    
+    </script>
+</body>
+</html>
