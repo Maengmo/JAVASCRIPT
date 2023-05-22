@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+        #box {
+            background-image: url();
+            background-repeat: no-repeat;
+            background-position: 98% 98%;
+        }
+    </style>
+</head>
+<body>
+    <!--
+
+        1. 상자의 위치 변경
+        2. 다중 객체 대상 적용
+
+      -->
+
+    <div id="box" class="box bg-yellow" style = "width : 200px; height: 200px;"></div>
+    <hr>
+    <textarea rows="5"></textarea>
+
+    <script>
+    
+        const box = document.getElementById('box');
+        let isDown = false;
+
+        box.onmouseout = function() {
+            event.target.style.backgroundColor = 'url()';
+            event.target.style.cursor = 'default';
+
+            event.target.style.backgroundImage = 'url(images/)';
+
+            window.onmousedown = null;
+        }
+
+        box.onmousemove = function() {
+            if((event.offsetX >= parseInt(box.style.width) -20) && (event.offsetY >= parseInt(box.style.height) - 20)) {
+                // event.target.style.backgroundColor = 'tomato';
+                event.target.style.backgroundImage = 'url(images/guide.png)';
+                event.target.style.cursor = "nw-resize";
+
+                window.onmousedown = function() {
+                    if(event.target.id == 'box') {
+                        isDown = true;
+                    }
+                };
+            }else {
+                event.target.style.backgroundColor = 'url()';
+                event.target.style.cursor = 'default';
+
+                window.onmousedown = null;
+
+                event.target.style.backgroundImage = 'url(images/)';
+
+                window.onmouseup = function() {
+                    if(event.target.id == 'box') {
+                        isDown = false;
+                    }
+                };
+            }
+
+        };
+
+        window.onmousedown = function() {
+            if (event.target.id == 'box') {
+                isDown = true;
+            }
+        };
+        
+        window.onmousemove = function(){
+            if(isDown) {
+                box.style.width = event.clientX + 'px';
+                box.style.height = event.clientY + 'px';
+            }
+
+        };
+
+        window.onmouseup = function() {
+            isDown = false;
+        };
+
+    </script>
+</body>
+</html>
