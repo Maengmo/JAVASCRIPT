@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+        body {
+            background-color: rgb(253, 253, 196);
+        }
+        #header {
+            width : 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin:  0 auto;
+        }
+
+        #tbl {
+            width : 800px;
+            margin:  0 auto;
+        }
+
+        #tbl td {
+            text-align: center;
+            height: 100px;
+            background-color: rgb(245, 230, 205);
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        #tbl th {
+            background-color: rgb(253, 217, 171);
+            font-weight: bold;
+        }
+
+        #btnprev, #btnnow, #btnnext {
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <!--  -->
+    <div id="header">
+        <h1 id="date"></h1>
+        <div>
+            <input type="button" value="이전달" id="btnprev">
+            <input type="button" value="현재" id="btnnow">
+            <input type="button" value="다음달" id="btnnext">
+        </div>
+    </div>
+    
+    <table id="tbl" class="table">
+        <thead>
+            <tr>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+
+    <script>
+    
+        const date = document.getElementById('date');
+        const btnprev = document.getElementById('btnprev');
+        const btnnow = document.getElementById('btnnow');
+        const btnnext = document.getElementById('btnnext');
+        const tbody = document.querySelector('#tbl tbody');
+
+        let year, month;
+
+        let now = new Date();
+        year = now.getFullYear();
+        month = now.getMonth();
+
+        function createCalendar(year, month) {
+            
+            date.textContent = year + '.' + (month+1);
+
+            //달력 만들기
+            //1. 해당월의 마지막 날짜
+            //2. 해당월 1일의 요일
+
+            //보고 싶은 달력의 1일
+            let lastDate = new Date(year, month+1, 0).getDate();
+            let firstDay = new Date(year, month, 1).getDay();
+            // console.log(firstDay);
+
+            //날짜 생성
+
+            let temp = '<tr>';
+
+            for (let i=0; i<firstDay; i++) {
+                temp += '<td></td>';
+            }
+
+            for (let i=1; i<=lastDate; i++) {
+
+                temp += '<td>';
+                temp += i;
+                temp += '</td>';
+                
+                //출력 날짜 == 토요일 
+                if ((i + firstDay) % 7 == 0) {
+                    temp += '</tr><tr>';
+                }
+
+            }
+
+            //날짜없는 빈 셀 만들기
+
+            let lastDateDay = new Date(year, month+1, 0).getDay();
+
+            for (let i=0; i<6-lastDateDay; i++) {
+                temp += '<td></td>';
+            }
+
+            temp += '</tr>';
+
+            tbody.innerHTML = temp;
+            
+        }
+
+        createCalendar(year, month); //현재 달 출력
+
+        btnprev.onclick = () => {
+            now.setMonth(now.getMonth() - 1) //이전달
+            year = now.getFullYear();
+            month = now.getMonth();
+            createCalendar(year, month);
+        };
+
+        btnnow.onclick = () => {
+            now = new Date();
+            year = now.getFullYear();
+            month = now.getMonth();
+            createCalendar(year, month);
+        };
+
+        btnnext.onclick = () => {
+            now.setMonth(now.getMonth() + 1) //다음달
+            year = now.getFullYear();
+            month = now.getMonth();
+            createCalendar(year, month);
+        };
+
+    </script>
+</body>
+</html>

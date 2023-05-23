@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+        #menu {
+            /* border : 1px solid black; */
+            display: flex;
+            width : 630px;
+
+            position: fixed;
+            top : -100px;
+            left : 0;
+            right : 0;
+            margin : 0 auto;
+        }
+        #menu img {
+            transition : 1s all;
+        }
+
+        /* #menu img:hover {
+            transform : translate(0, 90px)
+        } */
+    
+    </style>
+</head>
+<body>
+    <!--  -->
+
+    <nav id="menu">
+        <!-- img[src=imges/rect_icon0$.png]*5 -->
+        <img src="images/rect_icon01.png" alt="">
+        <img src="images/rect_icon02.png" alt="">
+        <img src="images/rect_icon03.png" alt="">
+        <img src="images/rect_icon04.png" alt="">
+        <img src="images/rect_icon05.png" alt="">
+    </nav>
+    
+    
+    
+    <script>
+
+        const list = document.querySelectorAll('#menu img');
+
+        let old = null;
+
+        for (let i=0; i<list.length; i++) {
+
+            list[i].onclick = function() {
+
+                //이전에 누른 메뉴? > 접기
+                if (old !=null){
+                    old.style.transform = 'translate(0, 0)';
+                }
+
+                if (event.target == old) {
+                    event.target.style.transform = 'translate(0,0)';
+                    old = null;
+                } else {
+                    //나중에 누른 메뉴
+                    event.target.style.transform = 'translate(0, 90px)';
+                    old = event.target;
+                }
+                
+            };
+
+        }
+    
+    </script>
+</body>
+</html>
