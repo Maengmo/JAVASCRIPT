@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+    
+    </style>
+</head>
+<body>
+    <!--  -->
+    
+    
+    
+    <script>
+
+        //JavaScript > 클래스
+
+        //JavaScript > 틀 선언 > 객체 생성 
+
+        //1. Object() or 객체 리터럴
+        const o1 = new Object();
+
+        o1.name = '홍길동';
+        o1.age = 20;
+
+        o1.hello = function() {
+            console.log(this.name);
+            console.log(this.age);
+        };
+
+        o1.hello();
+
+        const o2 = {
+            name : '아무개',
+            age : 20,
+            hello : function() {
+                console.log(this.name);
+                console.log(this.age);
+            }
+        };
+
+        o2.hello();
+
+        const o3 = {
+          name : '하하하'  
+        };
+
+        o3.age = 20;
+        o3.hello = function() {
+            console.log(this.name);
+            console.log(this.age);
+        }
+
+        o3.hello();
+
+        //2. 생성자 함수
+        //- 파스칼 표기법(필수X)
+        //- new 연산자와 같이 호출. 단독 호출 X
+        function User() {
+            this.name = '호호호';
+            this.age = 25;
+            this.hello = function() {
+                console.log(this.name);
+                console.log(this.age);
+            };
+        }
+
+        // User(); //단독 호출 > 전역 함수의 호출 > 내부에서의 this == window 객체
+
+        //const o4 = {};
+        //o4.name = '호호호'
+        const o4 = new User(); //이때의 this > 앞에서 생성된(new) 객체를 가리킨다.
+        o4.hello();
+
+        function Member(name, age) {
+            this.name =name;
+            this.age = age;
+            this.hello = function() {
+                console.log(this.name);
+                console.log(this.age);
+            };
+        } 
+
+        const o5 = new Member('헤헤헤', 22);
+        o5.hello();
+
+        //3. ES6 > 클래스 추가
+        class Mouse {
+
+            //생성자(고정-예약어)
+            //- 멤버 선언 + 멤버 초기화
+            constructor() {
+                this.name = 'G80';
+                this.button = 3;
+                this.price = 30000;
+            }
+
+        }
+
+        //const m1 = {};
+        const m1 = new Mouse();
+
+        console.log(m1.name);
+        console.log(m1.button);
+        console.log(m1.price);
+
+        class Keyboard {
+            
+            //멤버 변수(프로퍼티) > 잘 사용 안함.
+            name = 'K810';
+            price = 120000;
+            color;
+
+            constructor() {
+                this.color = 'white';
+            }
+        }
+
+        const k1 = new Keyboard();
+        console.log(k1.name);
+        console.log(k1.price);
+
+        class Item {
+
+            constructor(name, color) {
+                this.name = name;
+                this.color = color;
+            }
+
+            //메소드(function 생략)
+            info() {
+                console.log(this.name, this.color);
+            }
+
+        }
+
+        const i1 = new Item('노트북', 'black');
+        i1.info();
+
+        console.log(typeof i1); //object
+
+        function test() {
+
+        }
+
+        console.log(typeof test); //function
+
+        // class 키워드를 사용한 클래스 == 생성자의 다른 표현 방식
+        console.log(typeof Item); //Class(x) > function(o)
+
+        class Monitor {
+
+            constructor(name) {
+                this.name = name;
+            }
+
+            info() {
+                console.log('name : ' + this.name); 
+            }
+        }
+
+        class LG100 extends Monitor {
+            constructor() {
+                super('LG100');
+            }
+
+            check() {
+                console.log('자체 메소드');
+            }
+
+            info() {
+                super.info();
+                this.check();
+            }
+        }
+
+        const lg = new LG100();
+        lg.info();
+
+        //멤버명 앞에 '_' or '$' > 비공개 멤버 의미!!
+
+        // class Computer {
+
+        //     constructor(name, price) {
+        //         //멤버 접근 지정자 > 유사
+        //         this.a = 10;    //public
+        //         this._b = 20;    //protected(=private)
+        //         this.#c = 30;   //private
+        //     }
+
+        //     test() {
+        //         console.log(this.a, this._b, this.#c);
+        //     }
+        // }
+
+        // const c1 = new Computer();
+        // console.log(c1.a);
+        // console.log(c1._b);
+        // c1.test();
+
+        class Camera {
+            
+            constructor(name, price) {
+                this._name = name;
+                this._price = price;
+            }
+
+            setName(name) {
+                this._name = name;
+            }
+
+            getName() {
+                return this._name;
+            }
+
+            //set function() {}
+            set price(price) {
+                this._price = price;
+            }
+
+            //get function() {}
+            get price() {
+                return this._price;
+            }
+        }
+
+        const c2 = new Camera('Cannon', 1000000);
+
+        c2.setName('Sony');
+        console.log(c2.getName());
+
+        // c2.price(900000);
+        // console.log(c2.price());
+
+        //내부적으로는 함수인데, 외부에는 변수처럼 사용하는 멤버 > set,get 프로퍼티
+        c2.price = 900000;
+        console.log(c2.price);
+
+    </script>
+</body>
+</html>

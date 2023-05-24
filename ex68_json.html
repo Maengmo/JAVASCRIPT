@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+    
+    </style>
+</head>
+<body>
+    <!--  -->
+    
+    <script>
+
+        /*
+
+            JSON, Java Script Object Notation
+            - 자바스크립트 객체 표기법
+            - 자바스크립트의 객체를 문자열로 표현할 때 사용하는 포맷
+            - 자바스크립트에서 사용 중인 데이터(객체)를 이부 환경에 전달 > (파일입출력, 네트워크에 전달) > 하나의 문자열로 표현하는 방법 > JSON
+            - XML과 함께 데이터 전달용으로 많이 사용
+            - 언어 독립적 > 대부분의 언어/환경에서 JSON 지원
+
+            JavaScript Object Literal
+
+            const o1 = {
+                name : '홍길동',
+                age : 20
+            };
+
+            JSON
+            - 반드시 프로퍼티를 쌍따옴표로 묶는다.(홀따옴표, 역따옴표 불가능)
+
+            {
+                "name" : "홍길동",
+                "age" : 20
+                "hello" : function() {}
+            }
+
+
+        */
+
+        const hong = {
+            name: '홍길동',
+            age : 20,
+            gender : "남자",
+            hello : function() {
+                console.log(this.name);
+            },
+            nick : ['술꾼', '망나니', '바보'],
+            address: {
+                sido : '서울시',
+                gugun : '강남구',
+                dong : '역삼동'
+            }
+        };
+
+        //str
+        //- JSON 형태로 인코딩한 결과물
+        //- 직렬화
+        let str = JSON.stringify(hong);
+
+        console.log(typeof hong); //Object
+        console.log(typeof str);    //String
+
+        console.log(str);
+
+        //{"name":"홍길동","age":"20","gender":"male"}
+        //{"name":"홍길동","age":"20","gender":"male"}
+        /*
+            "name": "홍길동",
+            "age" : "20",
+            "gender" : "남자",
+            "nick" : ['술꾼', '망나니', '바보'],
+            "address": {
+                "sido" : '서울시',
+                "gugun" : '강남구',
+                "dong" : '역삼동'
+            }
+        */
+
+        //JSON(String) > JavaScript(object)
+
+        //JSON 형식의 문자열 수신
+        const data = '{ "name" : "홍길동", "age" : 20}';
+
+        //console.log(data)
+
+        const result = JSON.parse(data);
+
+        console.log(result.age);
+
+        //JavaScript Object > JSON > JavaScript Object
+
+    </script>
+</body>
+</html>
