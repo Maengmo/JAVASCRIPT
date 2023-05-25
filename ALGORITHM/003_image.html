@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 {
+            font-weight: bold;
+            color : gray;
+            font-size : 50px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <h1>고양이</h1>
+    <form name="form1">
+        <img src="images/catty01.png" id="cat1">
+        <img src="images/catty02.png" id="cat2">
+        <img src="images/catty03.png" id="cat3">
+        <img src="images/catty04.png" id="cat4">
+        <img src="images/catty05.png" id="cat5">
+    </form>
+    
+    <script>
+
+    window.onload = function() {
+
+        document.images["cat1"].onmouseover = function() {
+            document.images["cat1"].width += 5;
+        };
+        document.images["cat2"].onmouseover = function() {
+            document.images["cat2"].width += 5;
+        };
+        document.images["cat3"].onmouseover = function() {
+            document.images["cat3"].width += 5;
+        };
+        document.images["cat4"].onmouseover = function() {
+            document.images["cat4"].width += 5;
+        };
+        document.images["cat5"].onmouseover = function() {
+            document.images["cat5"].width += 5;
+        };
+
+        document.images["cat1"].onclick = function() {
+                document.images["cat1"].width = 128;
+        };
+        document.images["cat2"].onclick = function() {
+                document.images["cat2"].width = 128;
+        };
+        document.images["cat3"].onclick = function() {
+                document.images["cat3"].width = 128;
+        };
+        document.images["cat4"].onclick = function() {
+                document.images["cat4"].width = 128;
+        };
+        document.images["cat5"].onclick = function() {
+                document.images["cat5"].width = 128;
+        };
+
+        document.onkeydown = 
+        function(evt) {
+            if(evt.keyCode==49){
+                document.images["cat1"].width += 5;
+            }else if(evt.keyCode==50){
+                document.images["cat2"].width += 5;
+            }else if(evt.keyCode==51){
+                document.images["cat3"].width += 5;
+            }else if(evt.keyCode==52){
+                document.images["cat4"].width += 5;
+            }else if(evt.keyCode==53){
+                document.images["cat5"].width += 5;
+            }else if(evt.keyCode==27){
+                document.images["cat1"].width = 128;
+                document.images["cat2"].width = 128;
+                document.images["cat3"].width = 128;
+                document.images["cat4"].width = 128;
+                document.images["cat5"].width = 128;
+            }
+        }
+    }
+
+    </script>
+</body>
+</html>
