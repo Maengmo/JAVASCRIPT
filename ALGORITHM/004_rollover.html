@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img {
+            width : 200px;
+            height : 200px;
+            margin : 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+
+        <img src="images/cat01.jpg" name="cat1">
+        <img src="images/cat02.jpg" name="cat2">
+        <img src="images/cat03.jpg" name="cat3">
+        <img src="images/cat04.jpg" name="cat4">
+        <img src="images/cat05.jpg" name="cat5">
+
+
+    </div>
+    
+    <script>
+        cat1.onmouseover = m1;
+        cat1.onmouseout = m2;
+        cat2.onmouseover = m3;
+        cat2.onmouseout = m4;
+        cat3.onmouseover = m5;
+        cat3.onmouseout = m6;
+        cat4.onmouseover = m7;
+        cat4.onmouseout = m8;
+        cat5.onmouseover = m9;
+        cat5.onmouseout = m10;
+
+        function m1() {
+            cat1.src = 'images/dog01.jpg';
+        }
+
+        function m2() {
+            cat1.src = 'images/cat01.jpg';
+        }
+
+        function m3() {
+            cat2.src = 'images/dog02.jpg';
+        }
+
+        function m4() {
+            cat2.src = 'images/cat02.jpg';
+        }
+
+        function m5() {
+            cat3.src = 'images/dog03.jpg';
+        }
+
+        function m6() {
+            cat3.src = 'images/cat03.jpg';
+        }
+
+        function m7() {
+            cat4.src = 'images/dog04.jpg';
+        }
+
+        function m8() {
+            cat4.src = 'images/cat04.jpg';
+        }
+
+        function m9() {
+            cat5.src = 'images/dog05.jpg';
+        }
+
+        function m10() {
+            cat5.src = 'images/cat05.jpg';
+        }
+    </script>
+    
+</body>
+</html>

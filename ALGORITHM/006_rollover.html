@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            border : 1px solid black;
+            width : 540px;
+            margin : 10px;
+            padding : 10px;
+        }
+        #txt {
+            width : 540px;
+            margin : 10px;
+            padding : 10px;
+            color : red;
+            font-size : 20px;
+            border : 0px solid white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="images/img01.jpg" id="ski" value = "스키">
+        <img src="images/img02.jpg" id="flower" value = "해바라기" >
+        <img src="images/img03.jpg" id="tree" value ="나무">
+    </div>
+    <input type="text" id="txt" value="">
+    
+    <script>
+
+        var img1 = document.all.ski;
+        var img2 = document.all.flower;
+        var img3 = document.all.tree;
+        var txt = document.all.txt;
+
+        img1.onmouseover = m1;
+        img1.onmouseout = m2;
+        img2.onmouseover = m3;
+        img2.onmouseout = m4;
+        img3.onmouseover = m5;
+        img3.onmouseout = m6;
+
+        function m1() {
+            img1.src = 'images/img04.jpg'
+            txt.value = '\'스키\'타는 사람이 \'당근\'으로 변했습니다.'
+        }
+
+        function m2() {
+            img1.src = 'images/img01.jpg'
+            txt.value = ''
+        }
+        
+        function m3() {
+            img2.src = 'images/img05.jpg'
+            txt.value = '\'해바라기\'가  \'피망\'으로 변했습니다.'
+        }
+
+        function m4() {
+            img2.src = 'images/img02.jpg'
+            txt.value = ''
+        }
+
+        function m5() {
+            img3.src = 'images/img06.jpg'
+            txt.value = '\'나무\'가  \'개\'가 됐습니다.'
+        }
+
+        function m6() {
+            img3.src = 'images/img03.jpg'
+            txt.value = ''
+        }
+
+
+    </script>
+</body>
+</html>
