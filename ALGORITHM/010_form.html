@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl1 {
+			border: 1px solid gray;
+			border-collapse: collapse;
+			width: 600px;
+		}
+		
+		#tbl1 td {
+			border: 1px solid gray;
+			padding: 10px;
+		}
+		
+		#tbl1 td:first-child {
+			background-color: #DEDEDE;
+			width: 100px;
+			text-align: center;
+            font-weight: bold;
+		}
+		
+		input {
+			border: 1px solid gray;
+			padding-left: 3px;
+		}
+		
+		#first-number, #last-number {
+            width : 70px;
+        }
+
+        #born1 {
+            width : 50px;
+            margin-right : 5px;
+        }
+
+        #born2, #born3 {
+            width : 30px;
+            margin-right : 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <form name="form1">
+		<h1>회원 가입</h1>
+		<table id="tbl1">
+			<tr>
+				<td>주민번호</td>
+				<td>
+					<input type="text" id="first-number" name="firstnumber" onkeyup="check(this);" >
+                    - 
+                    <input type="text" id="last-number" name="lastnumber" onkeyup="check2(this);" >
+				</td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td>
+                    <input type="text" id="born1" name="born1">년
+                    <input type="text" id="born2" name="born2">월
+                    <input type="text" id="born3" name="born3">일
+                </td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td>
+                    <input type="radio" id="man" name="man">남자
+                    <input type="radio" id="women" name="women">여자
+                </td>
+			</tr>
+		</table>
+	</form>
+
+    <script>
+        function check(first) {
+
+            var born1 = document.all.born1;
+            var born2 = document.all.born2;
+            var born3 = document.all.born3;
+
+            var last = document.all.lastnumber;
+			
+			if (first.value.length == 6) {
+				born1.value = "19" + first.value.substring(0, 2);
+				born2.value = first.value.substring(2, 4);
+				born3.value = first.value.substring(4, 6);
+				last-number.focus();
+			}
+		}
+
+        function check2(last) {
+            var man = document.all.man;
+            var women = document.all.women;
+
+            if (last.value.length == 1) {
+				if (parseInt(last.value) % 2 == 1) {
+					man.checked = true;
+                    women.checked = false;
+				} else {
+					women.checked = true;
+                    man.checked = false;
+				}
+			}
+        }
+  
+    </script>
+    
+</body>
+</html>

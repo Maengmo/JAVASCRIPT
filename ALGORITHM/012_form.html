@@ -1,0 +1,125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+		#tbl {
+			width: 600px;
+		}
+		#tbl th {
+			font-size: 1em;
+			padding: 7px;
+		}
+		#tbl td {
+			text-align: center;
+		}
+		#tbl .txt {
+			width: 450px;
+			border: 1px solid #999;
+			background-color: white;
+			padding: 3px;
+		}
+		#tbl .txt:read-only {
+			cursor: not-allowed;
+			background-color: #eee;
+		}
+	</style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+
+	<h2>입력하기</h2>
+
+	<table id="tbl" class="table">
+		<tr>
+			<th>번호</th>
+			<th>입력</th>
+			<th>잠금</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td><input type="text" name="txt" class="txt" data-no="0"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="0"></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td><input type="text" name="txt" class="txt" data-no="1"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="1"></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td><input type="text" name="txt" class="txt" data-no="2"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="2"></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td><input type="text" name="txt" class="txt" data-no="3"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="3"></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td><input type="text" name="txt" class="txt" data-no="4"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="4"></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td><input type="text" name="txt" class="txt" data-no="5"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="5"></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td><input type="text" name="txt" class="txt" data-no="6"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="6"></td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td><input type="text" name="txt" class="txt" data-no="7"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="7"></td>
+		</tr>
+		<tr>
+			<td>9</td>
+			<td><input type="text" name="txt" class="txt" data-no="8"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="8"></td>
+		</tr>
+		<tr>
+			<td>10</td>
+			<td><input type="text" name="txt" class="txt" data-no="9"></td>
+			<td><input type="checkbox" name="cb" class="cb" data-no="9"></td>
+		</tr>
+	</table>
+
+	<script>
+		
+		var txt = document.all.txt;
+		var cb = document.all.cb;
+
+		for (var i=0; i<cb.length; i++) {
+			cb[i].onchange = function() {
+				if (event.srcElement.checked) {
+					txt[event.srcElement.dataset["no"]].readOnly = true;
+				} else {
+					txt[event.srcElement.dataset["no"]].readOnly = false;
+				}
+			};
+
+			txt[i].onkeydown = function() {
+				if (event.keyCode == 13) {
+					cb[event.srcElement.dataset["no"]].click();
+				}
+			};
+
+			txt[i].ondblclick = function() {
+				cb[event.srcElement.dataset["no"]].click();
+			};
+		}
+
+	</script>
+</body>
+</html>

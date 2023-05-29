@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>주문하기</h1>
+
+    <fieldset>
+		<legend>주문하시는 분</legend>
+		이름 : <input type="text" name="txtName1" autofocus /><br />
+		주소 : <input type="text" name="txtAddress1" />
+	</fieldset>
+
+    <div style="margin: 15px;">
+		<input type="checkbox" name="cb1" id="cb1" onclick="copy();" /> <label for="cb1">주문하시분과 정보과 동일합니다.</label>
+	</div>
+
+    <fieldset>
+		<legend>받으시는 분</legend>
+		이름 : <input type="text" name="txtName2" autofocus /><br />
+		주소 : <input type="text2" name="txtAddress2" />
+	</fieldset>
+
+    <script>
+		function copy() {
+			
+            var name1 = document.all.txtName1;
+			var address1 = document.all.txtAddress1;
+			var name2 = document.all.txtName2;
+			var address2 = document.all.txtAddress2;
+			var cb1 = document.all.cb1;
+			
+			if (cb1.checked) {
+				name2.value = name1.value;
+				address2.value = address1.value;
+			} else {
+				name2.value = "";
+				address2.value = "";
+				name2.focus();
+			}
+	
+		}
+	</script>
+
+</body>
+</html>
