@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #text1 {
+            font-weight: bolder;
+            font-size : 300px;
+            text-align: center;
+            width : 500px;
+            margin : 10px 300px;
+            border : 0px;
+        }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <input type="text" id="text1" name="text1" value="10" readonly>
+
+    <script>
+    
+    var n = 10;
+
+    var timer = setInterval(function() {
+        n--;
+        document.all.text1.value = n;
+
+        if (n == 0) {
+            clearInterval(timer);
+            location.href = "http://google.com";
+        }
+    }, 1000);
+
+    window.onkeydown = function() {
+        if (event.keyCode == 27) {
+            clearInterval(timer);
+            document.body.bgColor = "tomato";
+            alert('시간을 멈춥니다')
+        }
+    };
+
+    
+
+    </script>
+</body>
+</html>
