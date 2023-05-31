@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    #div1 {
+        border: 1px solid #999;
+        padding: 20px;
+        min-height: 146px;
+    }
+    </style>
+</head>
+<body>
+    <!--  -->
+    <div id="div1"></div>
+
+    <script>
+    
+        let div1 = document.getElementById('div1');
+
+        window.onkeydown = function() {
+            if(event.keyCode >=48 && event.keyCode <=57){
+                div1.innerHTML += "<img src='images/" + (event.keyCode - 48) + ".png'>"
+            }else if(event.keyCode >=96 && event.keyCode <=105){
+                div1.innerHTML += "<img src='images/" + (event.keyCode - 96) + ".png'>"
+            }
+        }
+
+    </script>
+</body>
+</html>
