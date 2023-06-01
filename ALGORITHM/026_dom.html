@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+		div, span, input, th, td, fieldset {
+			font-size: 14px;
+		}
+
+		#add {
+			border: 1px solid gray;
+			padding: 10px;
+			width: 300px;
+		}
+		
+		#add > div {
+			margin-bottom: 5px;
+		}
+		
+		#add > div > label:first-child {
+			display: inline-block;
+			width: 50px;
+			text-align: right;
+			margin-right: 10px;
+		}
+		
+		#btnadd {
+			margin-top: 10px;
+			margin-left: 15px;
+		}
+
+		#tbl1 {
+			border: 1px solid gray;
+			border-collapse: collapse;
+			width: 500px;
+			margin-top: 20px;
+		}
+		#tbl1 th {
+			background: #ddd;
+		}
+		#tbl1 th, #tbl1 td {
+			border: 1px solid gray;
+			padding: 4px;
+			text-align: center;
+		}
+		#tbl1 th:nth-child(1) { width: 50px; }
+		#tbl1 th:nth-child(2) { width: 70px; }
+		#tbl1 th:nth-child(3) { width: 50px; }
+		#tbl1 th:nth-child(4) { width: 120px; }
+		#tbl1 th:nth-child(5) { width: 210px; }
+		
+		
+		
+	</style>
+	<script>
+		
+		var txtname, selage, rbgender1, rbgender2, txtaddress, btnadd, tbody1;
+		var num = 1;
+		
+		window.onload = function() {
+			
+			txtname = document.getElementById("txtname");
+			selage = document.getElementById("selage");
+			rbgender1 = document.getElementById("rbgender1");
+			rbgender2 = document.getElementById("rbgender2");
+			txtaddress = document.getElementById("txtaddress");
+			btnadd = document.getElementById("btnadd");
+			tbody1 = document.getElementById("tbody1");
+			
+			btnadd.onclick = additem;
+			
+			for (var i=20; i<=60; i++) {
+				selage.innerHTML += "<option value='" + i + "'>" + i + "</option>";
+			}		
+			
+			txtaddress.onkeydown = function() {
+				if (event.keyCode == 13) {
+					additem();
+				}
+			};
+			
+		};
+		
+		function additem() {
+			
+			if (txtname.value == "") {
+				txtname.focus();
+				return;
+			}
+			
+			if (txtaddress.value == "") {
+				txtaddress.focus();
+				return;
+			}
+			
+			
+			if (tbody1.innerText == "등록된 항목이 없습니다.") {
+				tbody1.innerHTML = "";
+			}
+			
+			var row = "<tr>";
+			
+			row += "<td>";
+			row += num;
+			num++;
+			row += "</td>";
+			
+			row += "<td>";
+			row += txtname.value;
+			row += "</td>";
+			
+			row += "<td>";
+			row += selage.value;
+			row += "</td>";
+			
+			row += "<td>";
+			if (rbgender1.checked) {
+				row += "<img src='https://drive.google.com/uc?export=download&id=1pxPAyKXIRZmw-Er8BMvy5fkPSh6ea-uo'>";
+			} else {
+				row += "<img src='https://drive.google.com/uc?export=download&id=1Nqr6aDPium54TKqa1LKsZWmFPzDEHOfi'>";
+			}
+			row += "</td>";
+			
+			row += "<td>";
+			row += txtaddress.value;
+			row += "</td>";
+			
+			row += "</tr>";
+			
+			tbody1.innerHTML += row;
+			
+			
+			txtname.value = "";
+			selage.selectedIndex = 0;
+			rbgender1.checked = true;
+			txtaddress.value = "";
+			txtname.focus();
+			
+		}
+		
+	</script>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+
+	<fieldset id="add">
+		<legend>입력 항목</legend>
+		<div><label for="txtname">이름 : </label><input type="text" id="txtname" autofocus></div>
+		<div><label for="selage">나이 : </label><select id="selage"></select></div>
+		<div><label for="rbgener">성별 : </label><label><input type="radio" name="rbgender" id="rbgender1" value="m" checked> 남자</label><label><input type="radio" name="rbgender" id="rbgender2" value="f"> 여자</label></div>
+		<div><label for="txtaddress">주소 : </label><input type="text" id="txtaddress"></div>
+		<div><input type="button" id="btnadd" value="추가하기"></div>
+	</fieldset>
+	
+	
+	<table id="tbl1">
+		<thead>
+			<tr>
+				<th>번호</th>
+				<th>이름</th>
+				<th>나이</th>
+				<th>성별</th>
+				<th>주소</th>
+			</tr>
+		</thead>
+		<tbody id="tbody1">
+			<tr>
+				<td colspan="5">등록된 항목이 없습니다.</td>
+			</tr>
+		</tbody>
+	</table>
+
+		
+	<div style="display: none;">
+		<a href="https://drive.google.com/uc?export=download&id=1h8RmsHlJnc_zbfC4KPx7Ezb9ZyZXoBuA"></a>
+		<img src="https://drive.google.com/uc?export=download&id=1pxPAyKXIRZmw-Er8BMvy5fkPSh6ea-uo">
+		<img src="https://drive.google.com/uc?export=download&id=1Nqr6aDPium54TKqa1LKsZWmFPzDEHOfi">
+	</div>
+
+	<script>
+		// document.body.style.zoom = 1.5;
+	</script>
+
+
+</body>
+</html>
+
+
+
+
