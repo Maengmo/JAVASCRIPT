@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #tbl {
+            border : 1px solid gray;
+            border-collapse: collapse;
+        }
+
+        #tbl td {
+            border : 1px solid gray;
+            width : 128px;
+            height: 128px;
+            font-size : 0px;
+            padding : 0px;
+            margin : 0px;
+        }
+
+        #tbl img {
+            display: block;
+        }
+
+    </style>
+</head>
+<body oncontextmenu="return false;">
+    <table id="tbl">
+        <tr>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+        </tr>
+        <tr>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+        </tr>
+        <tr>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+        </tr>
+        <tr>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+        </tr>
+        <tr>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+            <td class="td"></td>
+        </tr>
+        </table>
+    <script>
+
+        const list = document.getElementsByClassName('td');
+
+        for (let i=0; i<list.length; i++) {
+
+            list[i].onmousedown = function() {
+
+                
+                if(event.buttons == 1) {
+                    event.target.innerHTML = '<img src="images/rect_icon01.png">';
+                } else if(event.buttons == 2) {
+                    event.target.innerHTML = '<img src="images/rect_icon02.png">';
+                } else if(event.buttons == 4) {
+                    event.target.innerHTML = '<img src="images/rect_icon03.png">';
+                }
+            };
+
+        }
+    
+    </script>
+</body>
+</html>
