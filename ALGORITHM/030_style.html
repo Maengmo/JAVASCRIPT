@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+        #main, main {
+            position : static;
+        }
+        #img1 {
+            position : absolute;
+            -webkit-user-drag: none; /* 잔상 제거 */
+        }
+    
+    </style>
+</head>
+<body>
+    <!--  -->
+    
+    <img src="images/m05.png" id="img1">
+    
+    <script>
+
+        var img1;
+
+        window.onload = function() {
+            img1 = document.getElementById("img1");
+
+            img1.style.left = "530px";
+            img1.style.top = "200px";
+
+            img1.onmouseover = function() {
+                var ox = parseInt(img1.style.left);
+                var oy = parseInt(img1.style.top);
+
+                if ((parseInt(event.clientX) >= ox + 60) && parseInt(event.clientX) <= ox + 120) {
+					img1.style.left = ox - 60 + "px";
+				}
+				
+				if ((parseInt(event.clientX) <= ox + 60) && parseInt(event.clientX) >= ox) {
+					img1.style.left = ox + 60 + "px";
+				}
+				
+				if ((parseInt(event.clientY) >= oy + 50) && parseInt(event.clientY) <= oy + 100) {
+					img1.style.top = oy - 50 + "px";
+				}
+				
+				if ((parseInt(event.clientY) <= oy + 50) && parseInt(event.clientY) >= oy) {
+					img1.style.top = oy + 50 + "px";
+				}
+            }
+        };
+    
+    </script>
+</body>
+</html>
