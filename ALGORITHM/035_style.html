@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+	   	body {
+			margin: 30px;
+		}
+		#txt1 {
+			font-size: 3em;
+			width: 100%;
+		}
+		#tbl1 { border: 1px solid black; border-collapse: collapse; }
+		#tbl1 td { border: 1px solid black; padding: 4px; width: 100px; }
+	</style>
+	<script>
+		window.onload = function() {
+			document.getElementById("txt1").onkeydown = function() {
+				var m = [-5, 5, 0];
+		
+				document.body.style.transform = "translate(" + (m[parseInt(Math.random() * 2)]) + "px, " + (m[parseInt(Math.random() * 2)]) + "px)";
+				setTimeout(function() {
+					document.body.style.transform = "translate(" + (m[parseInt(Math.random() * 2)]) + "px, " + (m[parseInt(Math.random() * 2)]) + "px)";
+				}, 5);
+				setTimeout(function() {
+					document.body.style.transform = "translate(0px, 0px)";
+				}, 20);
+			};
+		};
+	</script>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+	<h1>제목입니다.</h1>
+	<input type="text" id="txt1" autofocus>
+	<hr>
+	<h2>다른 내용입니다.</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, molestias deserunt repudiandae quas odio quis incidunt? Esse unde cupiditate sed dolores ut natus corrupti, adipisci explicabo repudiandae quod dignissimos asperiores?</p>
+	<p>Excepturi consequatur architecto consequuntur impedit animi sint inventore rerum quas nemo officiis modi hic tenetur, sit aliquid earum! Ullam iusto, nam enim ea numquam atque a amet incidunt laboriosam est!</p>
+	<p>Eveniet obcaecati error ratione, ex iure laudantium distinctio itaque. Obcaecati amet, voluptatum fugit dignissimos repudiandae laboriosam ullam. Vitae perspiciatis veritatis qui repudiandae necessitatibus ab soluta saepe pariatur, blanditiis sit ipsam!</p>
+	<p>Eveniet ab totam consectetur! Possimus corporis ea quod quas debitis hic reprehenderit repellat? Velit quas totam officia in. Ratione, quasi! Molestiae tenetur laudantium maiores. Sit nesciunt distinctio minima nostrum dolorum.</p>
+	
+
+	<h1>Table</h1>
+
+	<table id="tbl1">
+		<tr>
+		<td>Lorem, ipsum dolor.</td>
+		<td>Facere, autem ut.</td>
+		<td>Aliquid, veritatis repellat.</td>
+		<td>Eaque, expedita amet?</td>
+		<td>Ratione, dignissimos obcaecati!</td>
+		</tr>
+		<tr>
+		<td>Provident, ducimus reprehenderit?</td>
+		<td>Sunt, aspernatur dolorum?</td>
+		<td>Eum, magnam distinctio?</td>
+		<td>Animi, tempora quis.</td>
+		<td>Dignissimos, rerum explicabo?</td>
+		</tr>
+		<tr>
+		<td>Nulla, eum molestiae!</td>
+		<td>Ipsum, a necessitatibus!</td>
+		<td>In, numquam nam?</td>
+		<td>Expedita, voluptas molestiae.</td>
+		<td>Officiis, optio voluptatum?</td>
+		</tr>
+		<tr>
+		<td>Ea, quis minus.</td>
+		<td>Sint, autem perspiciatis.</td>
+		<td>Vel, dignissimos blanditiis!</td>
+		<td>Non, saepe ut?</td>
+		<td>Perspiciatis, rem in?</td>
+		</tr>
+		<tr>
+		<td>Odit, expedita provident?</td>
+		<td>Aut, autem itaque.</td>
+		<td>Ea, beatae consequatur!</td>
+		<td>Libero, fugit ratione.</td>
+		<td>A, recusandae nemo.</td>
+		</tr>
+		<tr>
+		<td>Quis, rerum aperiam?</td>
+		<td>Dolor, neque quaerat!</td>
+		<td>Omnis, nihil. Aspernatur?</td>
+		<td>Maiores, nobis sunt.</td>
+		<td>Fuga, nulla voluptate?</td>
+		</tr>
+		<tr>
+		<td>Debitis, sunt sed!</td>
+		<td>Eum, reprehenderit. Fugiat?</td>
+		<td>Dolorem, voluptatem adipisci!</td>
+		<td>Expedita, ad perferendis.</td>
+		<td>Eum, doloribus ut.</td>
+		</tr>
+		<tr>
+		<td>Atque, quidem expedita.</td>
+		<td>Animi, inventore maiores.</td>
+		<td>Nostrum, ut rem!</td>
+		<td>Accusamus, nisi corrupti.</td>
+		<td>Voluptatem, natus maiores.</td>
+		</tr>
+	</table>
+
+	
+</body>
+</html>

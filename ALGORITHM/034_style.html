@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/example.css">
+    <style>
+        body {
+         margin: 30px;
+     }
+     #tbl1 { border: 1px solid black; border-collapse: collapse; width: 1250px; }
+     #tbl1 td { border: 1px solid black; width: 250px; height: 188px; }
+     #tbl1 td img {
+         border-radius: 5px;
+         display: block;
+     }
+     #holder {
+         margin-top: 10px;
+         border: 1px solid black;
+         width: 250px; height: 188px;
+     }
+     .item {
+         position: absolute;
+         border-radius: 5px;
+     }
+ </style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+	<h1>고양이/강아지 보관함</h1>
+
+	<table id="tbl1">
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+
+	<h2>만들기</h2>
+	<div>
+		<input type="button" value="고양이 만들기" id="btncat">
+		<input type="button" value="강아지 만들기" id="btndog">
+	</div>
+	<div id="holder"></div>
+
+    <script>
+
+        let isDown = false;
+        let x = 0;
+        let y = 0;
+        let item;
+
+        document.getElementById('btncat').addEventListener('click', function() {
+            create('cat');
+        });
+
+        document.getElementById('btndog').addEventListener('click', function() {
+            create('dog');
+        });
+
+        function create(name) {
+            document.getElementById('holder').innerHTML = '';
+
+            let n =parseInt(Math.random()*5) + 1;
+            
+            const img = document.createElement('img');
+
+            img.setAttribute('src', `images/${name}0${n}.jpg`);
+			img.classList.add('item');
+
+			document.getElementById('holder').appendChild(img);
+		}
+
+        window.addEventListener('mousedown', function(event) {
+			if (event.target.classList.contains('item')) {
+				isDown = true;
+				x = event.offsetX;
+				y = event.offsetY;
+				item = event.target;
+			}
+		});
+		window.addEventListener('mousemove', function(event) {
+			if (isDown) {
+				item.style.left = event.clientX - x + 'px';
+				item.style.top = event.clientY - y + 'px';
+
+				event.stopPropagation();
+				return false;
+			}
+		});
+		window.addEventListener('mouseup', function(event) {
+			isDown = false;
+			
+			let td = getTd(event);
+
+			if (td) {
+				td.appendChild(event.target);
+				event.target.classList.remove('item');
+			}
+		});
+
+		function getTd(event) {
+
+			//해당 포인트에 어떤 태그들이 존재하는지 확인
+			const list = document.elementsFromPoint(event.clientX, event.clientY);
+
+			for (let i=0; i<list.length; i++) {
+				if (list[i].nodeName == 'TD') {
+					return list[i];
+				}
+			}
+		}
+
+
+    
+    </script>
+</body>
+</html>
