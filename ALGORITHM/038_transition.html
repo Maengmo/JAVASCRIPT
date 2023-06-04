@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="Author" content="in">
+	<meta name="Generator" content="Visual Studio Code">
+	<title>JavaScript</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" href="basic.css">
+	<style>
+		.main {
+			position: static;
+		}
+		#cat {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			transition: all 1s;
+		}
+		
+	</style>
+</head>
+<body oncontextmenu='return false;' ondragstart='return false;' onselectstart='return false;'>
+
+	<img src="https://drive.google.com/uc?export=download&id=1koqwCjLLt8ClJTOmxq3xFJ-vBP2z8gIy" id="cat">
+
+	<script>
+		
+		var cat;
+		
+		window.onload = function() {
+			
+			cat = document.getElementById("cat");
+			
+		};
+		
+		window.onmousedown = function() {
+			
+			cat.style.left = event.clientX - 64 + "px";
+			cat.style.top = event.clientY - 64 + "px";
+			
+		};
+		
+	</script>
+
+</body>
+</html>

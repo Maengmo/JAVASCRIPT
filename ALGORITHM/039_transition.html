@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="Author" content="in">
+	<meta name="Generator" content="Visual Studio Code">
+	<title>JavaScript</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" href="basic.css">
+	<style>
+		.main {
+			position: static;
+		}
+		#cat {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			transition-property: all;
+			transition-timing-function: linear;
+		}
+	</style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+	
+	<img src="https://drive.google.com/uc?export=download&id=15rZlOHWQTyuPFqIJs8_90R6W5JOOrVcv" id="cat">
+
+
+	<script>
+		
+		var cat;
+		var oldX = 0;
+		var oldY = 0;
+		
+		window.onload = function() {
+			
+			cat = document.getElementById("cat");
+			
+		};
+		
+		window.onmousedown = function() {
+
+			var dis_x = Math.abs(oldX - event.clientX);
+			var dis_y = Math.abs(oldY - event.clientY);
+
+			oldX = event.clientX;
+			oldY = event.clientY;
+
+			//c^2 = a^2 + b^2
+			var duration = Math.sqrt(dis_x * dis_x + dis_y * dis_y);
+			//document.title = dis_x + ", " + dis_y + ", " + (duration / 1000);
+			cat.style.transitionDuration = duration / 1000 + "s";
+			
+			cat.style.left = event.clientX - 64 + "px";
+			cat.style.top = event.clientY - 64 + "px";
+			
+		};
+		
+	</script>
+</body>
+</html>

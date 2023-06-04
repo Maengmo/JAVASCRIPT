@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+	body { 
+	   margin: 0; 
+	   transition: all 1s;
+	}
+
+	.section {
+	   width: 800px;
+	   margin: 0px auto;
+	   border-left: 1px solid black;
+	   border-right: 1px solid black;
+	   padding: 20px;
+	   padding-bottom: 400px;
+	   border-bottom: 1px solid black;
+	}
+ </style>
+
+</head>
+<body>
+	<div class="section">
+		<h1>Index</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est, commodi, natus ex, iste fugiat provident doloremque mollitia numquam nulla perferendis ab. Repudiandae ullam veniam sit dolor quibusdam nemo excepturi impedit.</p>
+	 </div>
+  
+	 <div class="section">
+		<h1>About me</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et eius possimus recusandae repellat labore in officia eligendi quas sit non ipsum dolorem temporibus sed, enim omnis voluptas, dicta repellendus qui. Culpa, repellat. Earum doloremque neque ullam beatae quia iste id, facilis quos veniam sint similique asperiores culpa hic minus cupiditate maiores praesentium magnam dolorum inventore delectus. Natus, magni saepe doloribus architecto animi earum dolorem ipsam perferendis voluptates molestiae molestias nostrum ducimus. Consequatur, possimus voluptas sapiente iusto nostrum impedit mollitia velit quibusdam natus, accusantium, nobis laboriosam amet! Dolorum culpa, nihil sunt doloremque corrupti, reiciendis voluptatum cupiditate dicta, dolorem expedita similique pariatur.</p>
+	 </div>
+  
+	 <div class="section">
+		<h1>Career</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil illum voluptas aut architecto similique quo accusantium deleniti assumenda impedit minima error repellat id, ad nisi accusamus deserunt enim numquam voluptatum esse iusto consequatur consequuntur labore. Asperiores repellat, quam, est iure laboriosam sit ea tempora beatae accusantium neque earum quod ab.</p>
+	 </div>
+  
+	 <div class="section">
+		<h1>Portfolio</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque, pariatur. Dolorum voluptatibus enim magni ex. At amet rerum atque delectus? Veniam delectus sunt beatae. Est rem fugiat placeat suscipit vitae praesentium dolore. Tenetur itaque illum facere quaerat nulla eos animi! Eos deserunt saepe enim, ea laborum, velit obcaecati quisquam harum molestias minus laudantium maxime minima. Reiciendis minima at natus fugit. Officia, repudiandae? Amet ratione obcaecati voluptatibus cumque excepturi quis? Nemo tenetur odit deserunt mollitia beatae quas accusamus laudantium vero sequi, rem nostrum? Earum ipsum dignissimos ad nobis maiores accusantium officia perspiciatis aspernatur! Eos pariatur hic saepe dolor in itaque voluptate commodi. Maxime excepturi exercitationem culpa consequatur error tempora eum consectetur officia, voluptate voluptates doloremque. Fugit rerum molestiae, inventore quidem dolorum quibusdam nam tenetur sapiente libero quasi sequi perspiciatis cupiditate earum non nihil beatae sint in architecto, ipsa magni error qui placeat. Earum temporibus quam velit iste blanditiis tempore nam porro.</p>
+	 </div>
+  
+	 <div class="section">
+		<h1>Education</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore accusamus numquam quis libero vel harum eligendi laboriosam, debitis, modi rem minus beatae eum, reiciendis obcaecati fuga similique. Qui quo beatae voluptate assumenda nostrum quidem nihil, est magnam debitis consectetur, sequi fuga repudiandae animi in quia molestias consequatur, reiciendis modi laudantium architecto hic amet a neque. Reiciendis ducimus excepturi suscipit repellendus. Minus, expedita earum quia quas amet cupiditate officia maxime ducimus enim a vero voluptatem fugiat omnis repellat ut quisquam laborum ipsam ipsa. Eius magni ipsa maiores aliquid deleniti distinctio, praesentium esse eos, optio officiis accusamus delectus. Mollitia temporibus minima, sit natus blanditiis nisi ipsum excepturi, ipsa magnam aperiam hic animi placeat! Consequuntur maiores suscipit accusantium nostrum ut architecto perferendis cum molestias, odit, aperiam quaerat illum molestiae asperiores soluta! Maxime adipisci quod eaque quibusdam illo? Totam ad cum quisquam suscipit magnam molestiae earum doloremque, numquam asperiores harum voluptate iusto quod exercitationem animi incidunt optio quaerat aliquid. Debitis id magnam quibusdam totam quam dicta minima eveniet nam labore temporibus, minus veniam sequi explicabo! Soluta quae, quos ab officia a, doloremque, culpa voluptas perspiciatis aliquam rem sit? Quo praesentium assumenda numquam libero in eius cupiditate debitis voluptates excepturi, ipsam distinctio dicta molestiae consequuntur.</p>
+	 </div>
+  
+  
+	 <script>
+  
+		const list = document.getElementsByClassName('section');
+  
+		const s1 = list[0].getBoundingClientRect().top;
+		const s2 = list[1].getBoundingClientRect().top - 100;
+		const s3 = list[2].getBoundingClientRect().top - 100;
+		const s4 = list[3].getBoundingClientRect().top - 100;
+		const s5 = list[4].getBoundingClientRect().top - 100;
+  
+		window.onscroll = function() {
+		   //console.log(window.scrollY);         
+  
+		   if (window.scrollY < s2) {
+			  console.log(1);
+			  document.body.bgColor = 'white';
+		   } else if (window.scrollY < s3) {
+			  console.log(2);
+			  document.body.bgColor = 'tomato';
+		   } else if (window.scrollY < s4) {
+			  console.log(3);
+			  document.body.bgColor = 'gold';
+		   } else if (window.scrollY < s5) {
+			  console.log(4);
+			  document.body.bgColor = 'cornflowerblue';
+		   } else {
+			  console.log(5);
+			  document.body.bgColor = 'yellowgreen';
+		   }
+  
+		};
+  
+		//좌표계와 상관없이 현재 좌표값 확인
+		//console.log(document.getElementsByClassName('section')[1].getBoundingClientRect().top);
+  
+	 </script>
+</body>
+</html>
