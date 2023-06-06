@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="Author" content="in">
+	<meta name="Generator" content="Visual Studio Code">
+	<title>JavaScript</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" href="basic.css">
+	<style>
+		.main {
+			position: static;
+		}
+		#cat {
+			position: absolute;
+			left: 0px;
+			top: 50px;
+		}
+	</style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+
+	<input type="button" value="시작" id="btn1">
+	<img src="https://drive.google.com/uc?export=download&id=1CtycyymQARHGgGCH-lViqomdsW1JNsq1" id="cat">
+
+
+	<script>
+		
+		var cat;
+		var pathX = [];
+		var pathY = [];
+		var timer = 0;
+		
+		window.onload = function() {
+			
+			cat = document.getElementById("cat");
+
+			document.getElementById("btn1").onclick = function() {
+
+				console.log(pathX.length);
+
+				timer = setInterval(function() {
+
+					cat.style.left = pathX[0] - 64 + "px";
+					cat.style.top = pathY[0] - 64 + "px";
+
+					pathX.shift();
+					pathY.shift();
+
+					if (pathX.length == 0) {
+						clearInterval(timer);
+					}
+
+				}, 21);
+					
+			};
+			
+		};
+
+		window.onmousemove = function() {
+
+			if (event.ctrlKey) {
+				pathX.push(event.clientX);
+				pathY.push(event.clientY);
+			}	
+
+		};
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="Author" content="in">
+	<meta name="Generator" content="Visual Studio Code">
+	<title>JavaScript</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	<link rel="stylesheet" href="basic.css">
+	<style>
+		#main, .main {
+			position: static;
+		}
+		body { background-color: #444; }
+		#box { border: 10px solid black; width: 1000px; height: 700px; margin: 50px auto; overflow: hidden; position: relative; left: 0px; top: 0px; background-color: white; }
+		.cat { position: absolute; left:0px; top: 0px; display: none; }
+	</style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+	<div id="box">
+		<img src="https://drive.google.com/uc?export=download&id=1koqwCjLLt8ClJTOmxq3xFJ-vBP2z8gIy" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1R8r-4CyguFnrkXIytSWINCc0h31G8vRh" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1fQMz-PMZTvGmd5OS13jWgCfsZiaaggTP" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=10WLacpiAP-kU2L8vKYhb5Scyk0--fMIx" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1xv-zE6HfD4e8EirUq7wQ__TV3oVa9kQ1" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=11ZiyhzBCegpX8KreLv1gYmQjp1tcL4E2" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1eOwMZU3RJvkP_n8-I6wxaGfBup_0SwIn" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1l3SjqNOkcgr_LsSIPh3fSWXzwP_Qt83B" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1x9mfOXShpJppOag-aCMlAn0316W99kpo" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1TeVDQTUSsUuCYMWUd8rJ6rD5j5SD73Aw" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=13g2V5Cka1uhdPIGjoaNn0f8clGi71rV7" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1CtycyymQARHGgGCH-lViqomdsW1JNsq1" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1aBc2_UgrOeUhUKhiBgFSjs-v3j58iDc-" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1AFZvCciCJoEkYDadcm1vkorwpfWkM0Oq" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1OVFJga9NKzXt2VA37L7QrVqLcwBEx2vT" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1vFRQuM-srcT6dgtEOESOF2i7R46UVhRe" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1c4b08akVn8vG95eQo_ROA02xvF82TIOM" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1KCbE0rQc-Foq98zOgn5uiMcb3GG81AB_" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1nRLvTYXhiN0nwVn1y8VC9n1-oJNVqjJF" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=1LeRxj_0tT9qUzVymJ_70sWw2iqPa6VUI" class="cat">
+		<img src="https://drive.google.com/uc?export=download&id=15rZlOHWQTyuPFqIJs8_90R6W5JOOrVcv" class="cat">
+	</div>
+
+	<script>
+		var cats;
+		var isDown = false;
+		var pathX = [];
+		var pathY = [];
+		var box;
+
+		window.onload = function() {
+			box = document.getElementById("box");
+			cats = document.getElementsByClassName("cat");
+			for (var i=0; i<cats.length; i++) {
+				cats[i].style.zIndex = (cats.length-i);
+			}
+		};
+
+		window.onmousedown = function() {
+			isDown = true;
+		};
+		window.onmouseup = function() {
+			isDown = false;
+		};
+		window.onmousemove = function() {
+			pathX.push(event.clientX);
+			pathY.push(event.clientY);
+
+			if (pathX.length > cats.length) {
+				pathX.shift();
+				pathY.shift();
+			}
+
+			moveCat();
+		};
+
+		function moveCat() {
+			for (var i=0; i<cats.length; i++) {
+				if (pathX[i] != null) {
+					cats[i].style.left = pathX[i] - 64 - box.offsetLeft + "px";
+					cats[i].style.top = pathY[i] - 64 - box.offsetTop + "px";
+					cats[i].style.display = "block";
+				}
+			}
+
+		}
+
+	</script>
+</body>
+</html>
