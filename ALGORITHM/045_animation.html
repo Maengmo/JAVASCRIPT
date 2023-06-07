@@ -1,0 +1,205 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+	   	body {
+			padding: 20px 150px;
+		}
+		#man1, #man2, #man3, #man4  {
+			width: 128px;
+			height: 128px;
+			background-image: url("https://drive.google.com/uc?export=download&id=1P6z78eDHra2F_h4pfltGoSgD4fckUJjY");
+			margin-bottom: 20px;
+		}
+		#cage {
+			border: 0px solid black;
+			width: 800px;
+			position: relative;
+			left: 0px;
+			top: 0px;
+		}
+		#cage img {
+			position: absolute;
+			top: 6px;
+			transition: all .2s;
+			display: none;
+		}
+		#cage img:first-child {
+			left: -108px;
+		}
+		#cage img:last-child {
+			left: 780px;
+		}
+	</style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+
+<div class="main m800">
+	<div class="mainHeader">
+		<h1>걷기</h1>
+
+	</div>
+
+	<div id="man1"></div>
+	<div id="man2"></div>
+	<div id="man3"></div>
+	<div id="cage">
+		<img src="https://drive.google.com/uc?export=download&id=1N4dBgC9fiHT54VFeYWhQ0YpQxBtTKIlv" id="left">
+		<div id="man4"></div>
+		<img src="https://drive.google.com/uc?export=download&id=1GX1zXAKZbjSZKpD9IP38sW5nZyTN6MBM" id="right">
+	</div>
+	
+	<div style="display: none;">
+		<img src="https://drive.google.com/uc?export=download&id=1P6z78eDHra2F_h4pfltGoSgD4fckUJjY">
+		<img src="https://drive.google.com/uc?export=download&id=1N4dBgC9fiHT54VFeYWhQ0YpQxBtTKIlv">
+		<img src="https://drive.google.com/uc?export=download&id=1GX1zXAKZbjSZKpD9IP38sW5nZyTN6MBM">
+	</div>
+
+	<script>
+		
+		//그냥 걷는 사람
+		var man1 = document.getElementById("man1");
+		var x1 = 0;
+		var y1 = 0;
+
+		var timer1 = setInterval(function() {
+			man1.style.backgroundPosition = x1 + "px " + y1 + "px";
+			x1 -= 128;
+			if (x1 <= -(128 * 4)) {
+				x1 = 0;
+				y1 += 128;
+				if (y1 >= (128 * 2)) {
+					y1 = 0;
+				}
+			}
+		}, 100);
+
+
+
+		//누르면 앞으로 가는 사람
+		var man2 = document.getElementById("man2");
+		var x2 = 0;
+		var y2 = 0;
+		var go2 = false;
+		var distance2 = 0;
+
+		man2.onclick = function() { go2 = true; };
+
+		var timer2 = setInterval(function() {
+			man2.style.backgroundPosition = x2 + "px " + y2 + "px";
+			x2 -= 128;
+			if (x2 <= -(128 * 4)) {
+				x2 = 0;
+				y2 += 128;
+				if (y2 >= (128 * 2)) {
+					y2 = 0;
+				}
+			}
+			if (go2) {
+				man2.style.transform = "translate(" + distance2 + "px, 0px)";
+				//man2.style.marginLeft = distance2 + "px";
+				distance2 += 10;
+			}
+		}, 100);
+
+
+
+
+		//누르면 걷기 시작하면서 앞으로 가는 사람
+		var man3 = document.getElementById("man3");
+		var x3 = 0;
+		var y3 = 0;
+		var go3 = 0;
+		var distance3 = 0;
+
+		man3.onclick = function() { 
+			if (go3 == 0) {
+				var timer3 = setInterval(function() {
+					man3.style.backgroundPosition = x3 + "px " + y3 + "px";
+					x3 -= 128;
+					if (x3 <= -(128 * 4)) {
+						x3 = 0;
+						y3 += 128;
+						if (y3 >= (128 * 2)) {
+							y3 = 0;
+						}
+					}
+					if (go3 == 2) {
+						man3.style.transform = "translate(" + distance3 + "px, 0px)";
+						//man3.style.marginLeft = distance3 + "px";
+						distance3 += 10;
+					}
+				}, 100);
+				go3 = 1;
+			} else {
+				go3 = 2;
+			}
+		};
+
+
+
+
+		//누르면 왔다 갔다 하는 사람
+		var man4 = document.getElementById("man4");
+		var x4 = 0;
+		var y4 = 0;
+		var go4 = false;
+		var distance4 = 0;
+		var direction = 1;
+
+		man4.onclick = function() { go4 = true; };
+
+		var timer4 = setInterval(function() {
+			man4.style.backgroundPosition = x4 + "px " + y4 + "px";
+			x4 -= 128;
+			if (x4 <= -(128 * 4)) {
+				x4 = 0;
+				y4 += 128;
+				if (y4 >= (128 * 2)) {
+					y4 = 0;
+				}
+			}
+			if (go4) {
+
+				man4.style.transform = "translate(" + distance4 + "px, 0px) scale(" + direction + ", 1)"; 
+
+				distance4 += 10 * direction;
+
+				if (distance4 > 660) {
+					direction *= -1;
+					setTimeout(function() {
+						document.getElementById("right").style.transform = "scale(1.2,1.2)";
+						document.getElementById("right").style.display = "block";
+					}, 150);
+					setTimeout(function() {
+						document.getElementById("right").style.transform = "scale(1,1)";
+					}, 450);
+				}
+				if (distance4 < -30) {
+					direction *= -1;
+					setTimeout(function() {
+						document.getElementById("left").style.transform = "scale(1.2,1.2)";
+						document.getElementById("left").style.display = "block";
+					}, 150);
+					setTimeout(function() {
+						document.getElementById("left").style.transform = "scale(1,1)";
+					}, 450);
+				}
+			}
+		}, 100);
+
+
+	</script>
+
+
+</body>
+</html>

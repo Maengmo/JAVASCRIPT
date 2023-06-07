@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+		body {
+			background-color: #f5f5f5;
+			text-align: center;
+			margin-top: 100px;
+		}
+		#bird  {
+			width: 200px;
+			height: 139px;
+			background-image: url("https://drive.google.com/uc?export=download&id=1jDYEreaHYZ2p2w2FbETMgldZDrIxec9W");
+			transition: transform 3s;
+			margin: 0px auto;
+		}
+		#selspeed {
+			margin-top: 20px;
+			margin-left: 10px;
+		}
+	</style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+	<h1>새 날개짓</h1>
+
+	<div id="bird"></div>
+
+	새의 속도 : 
+	<select id="selspeed">
+		<option value="300">느림</option>
+		<option value="100" selected>보통</option>
+		<option value="60">빠름</option>
+		<option value="10">엄청빠름</option>
+	</select>
+
+	<div style="display: none;">
+		<img src="https://drive.google.com/uc?export=download&id=1jDYEreaHYZ2p2w2FbETMgldZDrIxec9W">
+	</div>
+
+	<script>
+		
+		var bird = document.getElementById("bird");
+		var x = 0;
+		var speed = 100;
+		var timer = 0;
+		
+		timer = setInterval(function() {
+			bird.style.backgroundPosition = x + "px 0px";
+			x -= 200;
+		}, speed);
+
+		document.getElementById("selspeed").onchange = function() {
+			clearInterval(timer);
+			timer = setInterval(function() {
+				bird.style.backgroundPosition = x + "px 0px";
+				x -= 200;
+				if (document.getElementById("selspeed").value == 10) {
+					bird.style.transform = "translate(0px, -1000px)";
+				}
+			}, event.srcElement.value);
+		};
+
+	</script>
+
+</body>
+</html>

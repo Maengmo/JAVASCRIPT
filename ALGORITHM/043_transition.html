@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+<style>
+
+	body {
+		margin: 0px;
+		overflow-x: hidden; 
+		overflow-y: auto;
+		transition: all 1s;
+	}
+
+	section {
+		transition: all 1s linear;
+	}
+	
+	#menu {
+		width: 126px;
+		transform: translate(-100px, 0px);
+	}
+	
+	#menu .item {
+		float: left;
+		transition: all .3s;
+		cursor: pointer;
+		transition-timing-function: ease-in;
+		border: 1px solid white;
+		margin-top: -1px;
+	}
+	
+</style>
+<script>
+
+	var colors = ["#A67F62", "#BE4F3B", "#E7C758", "#666666", "#63AFD1"];
+	var item;
+	var sel;
+	var n;
+	var ing = false;
+	var content;
+	var contentColors = ["#fff", "#fff", "#444", "#fff", "#fff"];
+	
+	window.onload = function() {
+		
+		item = document.getElementsByClassName("item");
+		content = document.getElementById("content");
+		
+		for (var i=0; i<item.length; i++) {
+			
+			item[i].onmousedown = function() {
+				
+				if (!ing) {
+
+					ing = true;
+
+					sel = event.srcElement;
+					
+					sel.style.transform = "translate(" + (screen.availWidth - 26) + "px, 0px)";
+					n = sel.src.substr(sel.src.lastIndexOf(".")-1, 1);
+					
+					
+					setTimeout(function() {
+						sel.style.transition = "all 3s";
+						sel.style.transform = "translate(" + (screen.availWidth - 26 + 146) + "px, 0px)";
+						//sel.style.opacity = "0";
+					}, 500);
+					
+					setTimeout(function() {
+						document.body.style.backgroundColor = colors[n-1];			
+						content.style.color = contentColors[n-1];
+					}, 900);
+					
+					setTimeout(function() {
+						sel.style.transition = "all 1ms";
+						sel.style.transform = "translate(-100px, 0px)";	
+					}, 2200);
+					
+					setTimeout(function() {
+						sel.style.transition = "all 1s";
+						sel.style.transform = "translate(0px, 0px)";	
+					}, 2300);
+					
+					setTimeout(function() {
+						sel.style.transition = "all .3s";
+						sel.style.transform = "translate(0px, 0px)";	
+						ing = false;
+					}, 3300);
+				
+				}
+			};
+			
+		}
+		
+	};
+	
+</script>
+</head>
+<body>
+	<nav id="menu">
+		<img src="images/rect_icon01.png" class="item">
+		<img src="images/rect_icon02.png" class="item">
+		<img src="images/rect_icon03.png" class="item">
+		<img src="images/rect_icon04.png" class="item">
+		<img src="images/rect_icon05.png" class="item">
+	</nav>
+	<section id="content">
+		<h1>Lorem ipsum dolor sit amet.</h1>
+		Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eligendi ipsum aut harum, officiis soluta voluptate quo adipisci quidem impedit! Minima dolore eos provident unde esse repudiandae, porro ducimus assumenda quaerat!
+		<br>
+		<br>
+		Est omnis distinctio veniam ipsam? Dignissimos fugiat ullam rerum amet fuga quasi voluptates architecto exercitationem, repellat alias cumque eveniet corrupti deleniti voluptatum pariatur delectus dolores eos libero consequatur maxime similique?
+		<br>
+		<br>
+		Temporibus sed quidem praesentium suscipit, vitae eligendi, fugit pariatur incidunt corporis minima excepturi recusandae amet, debitis voluptatibus? Suscipit facilis repellat placeat blanditiis. Amet cupiditate in quis quo eligendi dolore ad.
+		<br>
+		<br>
+		Obcaecati, rerum. Et, ipsum illo dicta cupiditate, aut voluptate ullam tenetur obcaecati necessitatibus sed quis, nihil culpa! Corrupti adipisci qui ducimus cum sunt, fugit soluta nam dicta recusandae optio repudiandae!
+		<br>
+		<br>
+		Dolor, sapiente iure. Beatae minus neque excepturi repellat quibusdam molestiae in, molestias incidunt totam hic error dolores quam voluptate commodi fugit veniam sed suscipit recusandae laboriosam. Eaque nam tempore mollitia.
+	</section>
+</body>
+</html>
