@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+		#tbl1 {
+			border: 1px solid black;
+			border-collapse: collapse;
+			margin: 50px auto;
+		}
+		#tbl1 td {
+			border:1px solid black;
+			width: 126px;
+			height: 126px;
+			position: relative;
+			padding: 0px;
+			margin: 0px;
+			overflow: hidden;
+		}
+		#tbl1 td img {
+			display: block;
+		}
+		
+		.icon {
+			transition: all .5s;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+		}
+	</style>
+	<script>
+		
+		var icon;
+		var temp;
+		var timer = 0;
+		
+		window.onload = function() {
+			
+			icon = document.getElementsByClassName("icon");
+			
+			for (var i=0; i<icon.length; i++) {
+				icon[i].onclick = function() {
+					
+					if (timer == 0) {
+						var c = event.srcElement;
+						//c.style.transformOrigin = "0px 64px";
+						c.style.transform = "translate(126px, 126px)";
+						temp = c;
+						timer = setTimeout(function() {
+							temp.style.transform = "translate(0px, 0px)";
+							timer = 0;
+						}, 1000);
+						
+						/* c = event.srcElement.previousSibling;
+						c.style.transformOrigin = "126px 64px";
+						c.style.transform = "scale(0, 1)"; */
+					}
+					
+				};
+			}
+			
+		};
+		
+		
+	</script>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+	<table id="tbl1">
+		<tr>
+			<td><img src="https://drive.google.com/uc?export=download&id=1s96T2izIFLk42O83PU5X3OiX1d0kgPFG" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1pr699y450IgMNTMiqYC1KQulKNZs96Ke" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1UAfgmHmcv4YZf254cpbKzF0yv585PV8L" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1XohxkESPgeOxsyKfHD1T5AQKHdIz9Sj0" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1n9wRA0w20e60yx3qBCjikiDXhVQqATcO" class="icon"></td>
+		</tr>
+		<tr>
+			<td><img src="https://drive.google.com/uc?export=download&id=1kCjVgvFch-Ty5IUbinCUVSdZNnGLr7lD" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1BtgKt2qjFEAW9AGXs8YOeOLrqy2U89vI" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1o5bglQXM0cr8dReLJsy3WurC0DtzybJ1" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1luksj1inywpi_zUdoAuRHvmRpF9XWpV3" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1luwdbS89leshMOK_mE7cubcouBCjfaaM" class="icon"></td>
+		</tr>
+		<tr>
+			<td><img src="https://drive.google.com/uc?export=download&id=1yCzmF3IvuBjG1fpXrpOxzxHQPU37WFxt" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1AO_A3RRC4AUZhpmFs0PXD5X1HSUpk3FF" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1Qk36O9q6IH_LNfWtnpubnFzXxrjoP6nZ" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1DxJKd6uw44NHNDKSOdaC3SBDvjxmVPxL" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=17xXgFf20rvuwILeSGkZnkdUzueMHB_c2" class="icon"></td>
+		</tr>
+		<tr>
+			<td><img src="https://drive.google.com/uc?export=download&id=1lhb-Y6qqsJ-U7BdLTHWizMQGBYtI9sQn" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1V1mKmLtqmJuhOtxYwwdqw8Y5GnodZ9vx" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=13okF4D3ntpYnSMxoGXhdjd4paeGGewwa" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1s96T2izIFLk42O83PU5X3OiX1d0kgPFG" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1pr699y450IgMNTMiqYC1KQulKNZs96Ke" class="icon"></td>
+		</tr>
+		<tr>
+			<td><img src="https://drive.google.com/uc?export=download&id=1UAfgmHmcv4YZf254cpbKzF0yv585PV8L" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1XohxkESPgeOxsyKfHD1T5AQKHdIz9Sj0" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1n9wRA0w20e60yx3qBCjikiDXhVQqATcO" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1kCjVgvFch-Ty5IUbinCUVSdZNnGLr7lD" class="icon"></td>
+			<td><img src="https://drive.google.com/uc?export=download&id=1BtgKt2qjFEAW9AGXs8YOeOLrqy2U89vI" class="icon"></td>
+		</tr>
+	</table>
+
+	<div style="display: none;">
+		<img src="https://drive.google.com/uc?export=download&id=1s96T2izIFLk42O83PU5X3OiX1d0kgPFG">
+		<img src="https://drive.google.com/uc?export=download&id=1pr699y450IgMNTMiqYC1KQulKNZs96Ke">
+		<img src="https://drive.google.com/uc?export=download&id=1UAfgmHmcv4YZf254cpbKzF0yv585PV8L">
+		<img src="https://drive.google.com/uc?export=download&id=1XohxkESPgeOxsyKfHD1T5AQKHdIz9Sj0">
+		<img src="https://drive.google.com/uc?export=download&id=1n9wRA0w20e60yx3qBCjikiDXhVQqATcO">
+		<img src="https://drive.google.com/uc?export=download&id=1kCjVgvFch-Ty5IUbinCUVSdZNnGLr7lD">
+		<img src="https://drive.google.com/uc?export=download&id=1BtgKt2qjFEAW9AGXs8YOeOLrqy2U89vI">
+		<img src="https://drive.google.com/uc?export=download&id=1o5bglQXM0cr8dReLJsy3WurC0DtzybJ1">
+		<img src="https://drive.google.com/uc?export=download&id=1luksj1inywpi_zUdoAuRHvmRpF9XWpV3">
+		<img src="https://drive.google.com/uc?export=download&id=1luwdbS89leshMOK_mE7cubcouBCjfaaM">
+		<img src="https://drive.google.com/uc?export=download&id=1yCzmF3IvuBjG1fpXrpOxzxHQPU37WFxt">
+		<img src="https://drive.google.com/uc?export=download&id=1AO_A3RRC4AUZhpmFs0PXD5X1HSUpk3FF">
+		<img src="https://drive.google.com/uc?export=download&id=1Qk36O9q6IH_LNfWtnpubnFzXxrjoP6nZ">
+		<img src="https://drive.google.com/uc?export=download&id=1DxJKd6uw44NHNDKSOdaC3SBDvjxmVPxL">
+		<img src="https://drive.google.com/uc?export=download&id=17xXgFf20rvuwILeSGkZnkdUzueMHB_c2">
+		<img src="https://drive.google.com/uc?export=download&id=1lhb-Y6qqsJ-U7BdLTHWizMQGBYtI9sQn">
+		<img src="https://drive.google.com/uc?export=download&id=1V1mKmLtqmJuhOtxYwwdqw8Y5GnodZ9vx">
+		<img src="https://drive.google.com/uc?export=download&id=13okF4D3ntpYnSMxoGXhdjd4paeGGewwa">
+	</div>
+
+	
+</body>
+</html>

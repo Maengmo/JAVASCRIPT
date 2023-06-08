@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+		#btnList, #imgView {
+			margin: 20px;
+			text-align: center;
+		}
+		#imgView img {
+			border: 1px solid #999;
+		}
+		#btnList input {
+			border: 1px solid #ccc;
+			background-color: white;
+			width: 80px;
+			height: 45px;
+		}
+		#btnList #btnstart {
+			background-color: tomato;
+			color: white;
+		}
+		#btnList input {
+			cursor: pointer;
+			outline: none;
+		}
+	</style>
+</head>
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+
+	<h1>이미지 뷰어</h1>
+
+	<div>
+		<div id="btnList">
+			<input type="button" name="btnstart" id="btnstart" value="▷">
+			<input type="button" name="btn" value="[1]" data-index="0">
+			<input type="button" name="btn" value="2"  data-index="1">
+			<input type="button" name="btn" value="3"  data-index="2">
+			<input type="button" name="btn" value="4"  data-index="3">
+			<input type="button" name="btn" value="5"  data-index="4">
+			<input type="button" name="btn" value="6"  data-index="5">
+			<input type="button" name="btn" value="7"  data-index="6">
+			<input type="button" name="btn" value="8"  data-index="7">
+			<input type="button" name="btn" value="9"  data-index="8">
+			<input type="button" name="btn" value="10"  data-index="9">
+		</div>
+		<div id="imgView"><img src="https://drive.google.com/uc?export=download&id=1j3WlxG7u4fqXeGb3HOCDgNZ5WCej90V8" name="img1"></div>
+	</div>
+
+	<div style="display: none;">
+		<img src="https://drive.google.com/uc?export=download&id=1j3WlxG7u4fqXeGb3HOCDgNZ5WCej90V8">
+		<img src="https://drive.google.com/uc?export=download&id=1J-MZxR7gmvNoQ3N4mCoWlrJSSt_zExGn">
+		<img src="https://drive.google.com/uc?export=download&id=1xsY1txszVwQ2ZGiScaHAzCK6Um4vLeWH">
+		<img src="https://drive.google.com/uc?export=download&id=1bg4o-HHtfFsdv4PwBRl-m_FWV40A6Ijm">
+		<img src="https://drive.google.com/uc?export=download&id=1l7wyakKXy89T8hmsl2swxquUR1RNnyB6">
+		<img src="https://drive.google.com/uc?export=download&id=1fFjHujQOxIEI2753PLMsnGcd0GNYt_cI">
+		<img src="https://drive.google.com/uc?export=download&id=1Pgy-1Hr0IdiNX1ddOkJmoDo7f8h4p8Sa">
+		<img src="https://drive.google.com/uc?export=download&id=1i58aepCHagrmiqcqc3d-YquQmLyjsunM">
+		<img src="https://drive.google.com/uc?export=download&id=10hu4v8IEklHJyrFcMhDbQD052Cx6HzgM">
+		<img src="https://drive.google.com/uc?export=download&id=1ATZ2mG30zuXLf9A5a7noHgq1mjO2RD5L">
+	</div>
+
+	<script>
+		
+		var n = 1;
+		var timer = -1;
+
+		var list = [
+			"https://drive.google.com/uc?export=download&id=1j3WlxG7u4fqXeGb3HOCDgNZ5WCej90V8",
+			"https://drive.google.com/uc?export=download&id=1J-MZxR7gmvNoQ3N4mCoWlrJSSt_zExGn",
+			"https://drive.google.com/uc?export=download&id=1xsY1txszVwQ2ZGiScaHAzCK6Um4vLeWH",
+			"https://drive.google.com/uc?export=download&id=1bg4o-HHtfFsdv4PwBRl-m_FWV40A6Ijm",
+			"https://drive.google.com/uc?export=download&id=1l7wyakKXy89T8hmsl2swxquUR1RNnyB6",
+			"https://drive.google.com/uc?export=download&id=1fFjHujQOxIEI2753PLMsnGcd0GNYt_cI",
+			"https://drive.google.com/uc?export=download&id=1Pgy-1Hr0IdiNX1ddOkJmoDo7f8h4p8Sa",
+			"https://drive.google.com/uc?export=download&id=1i58aepCHagrmiqcqc3d-YquQmLyjsunM",
+			"https://drive.google.com/uc?export=download&id=10hu4v8IEklHJyrFcMhDbQD052Cx6HzgM",
+			"https://drive.google.com/uc?export=download&id=1ATZ2mG30zuXLf9A5a7noHgq1mjO2RD5L"
+		];
+
+		document.all.btnstart.onclick = function() {
+			var temp = event.srcElement;
+			if (temp.value == "||") {
+				temp.value = "▷";
+				clearInterval(timer);
+			} else {
+				temp.value = "||";
+				start();
+			}
+		};
+
+		for (var i=0; i<document.all.btn.length; i++) {
+			document.all.btn[i].onclick = function() {
+				
+				document.all.btnstart.value = "▷";
+				clearInterval(timer);
+
+				for (var i=0; i<document.all.btn.length; i++) {
+					document.all.btn[i].value = i + 1;
+				}
+				
+				n = parseInt(event.srcElement.value) - 1;
+
+				document.images["img1"].src = list[event.srcElement.value - 1];
+				event.srcElement.value = "[" + event.srcElement.value + "]";
+
+			};
+		}
+
+		function start() {
+			timer = setInterval(function() {
+				n++;
+
+				if (n > 10) { n = 1; }
+
+				for (var i=0; i<document.all.btn.length; i++) {
+					document.all.btn[i].value = i + 1;
+				}
+
+				document.images["img1"].src = list[n - 1];
+				document.all.btn[n-1].value = "[" + n + "]";
+
+				
+			}, 1000);
+		}
+
+		function addZero(num) {
+			if (num < 10) return "0" + num;
+			else return "" + num;
+		}
+
+		//start();
+
+	</script>
+
+</body>
+</html>
+
