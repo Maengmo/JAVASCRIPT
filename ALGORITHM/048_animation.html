@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+   <style>
+	.line {
+		border-top: 1px solid black;
+		width: 100px;
+		transition: all 3s;
+		margin-bottom: 0px;
+	} 
+	</style>
+</head>
+
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false' onload='init();'>
+
+	<div id="box"></div>
+
+	<script>
+	
+		//var colors = [ 'black', 'tomato', 'cornflowerblue', 'gold', 'green' ];
+	
+		for (var i=0; i<500; i++) {
+			var line = document.createElement("div");
+			line.className = "line";
+			//line.dataset["color"] = 0;
+			line.onmouseover = function() {
+				var obj = event.srcElement;
+				obj.style.width = "100%";
+				//obj.dataset["color"]++;
+				//obj.style.borderColor = colors[line.dataset["color"]];
+				setTimeout(function() {
+					obj.style.width = "100px";
+				}, 3000);
+			};		
+			document.getElementById("box").append(line);
+		}
+	</script>
+
+</body>
+</html>    
+
+
+
+
+
+
+

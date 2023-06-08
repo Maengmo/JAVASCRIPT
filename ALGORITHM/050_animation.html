@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+    <style>
+
+        body {
+            transition-property: filter, -webkit-filter;
+            transition-duration: 3s;
+        }
+
+        h1 { font-family: arial; font-size: 3em; font-variant: small-caps; text-align: center; margin-bottom: 5px; }
+        #box {
+            border: 10px solid #999;
+            border-radius: 15px;
+            width: 300px;
+            height: 200px;
+            margin: 0px auto;
+            background: #eee;
+            transform: translate(0px, 0px);
+            z-index: 3;
+            position: relative;
+            left: 0px;
+            top: 0px;
+        }
+        #score {
+            font-family: impact;
+            font-weight: bold;
+            font-size: 7em;
+            color: cornflowerblue;
+            text-align: center;
+            border: 0px;
+            outline: none;
+            width: 300px;
+            background-color: transparent;
+        }
+        #area {
+            border: 5px solid #ccc;
+            border-radius: 10px;
+            width: 1400px;
+            height: 650px;
+            margin: -130px auto;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+        }
+        .citem {
+            width: 50px;
+            height: 50px;
+            float: left;
+            margin-left: 10px;
+        }
+        .citem:first-child {
+            margin-left: 70px;
+        }
+
+        .vibCat {
+            animation: keyCat .1s infinite alternate;
+        }
+
+        @keyframes keyCat {
+            0% { transform: translate(0px, 0px); }
+            25% { transform: translate(15px, 0px); }
+            50% { transform: translate(0px, 0px); }
+            75% { transform: translate(-15px, 0px); }
+            100% { transform: translate(0px, 0px); }
+        }
+
+        #stat {
+            font-size: 7em;
+            font-variant: small-caps;
+            font-family: Arial;
+            text-align: center;
+            color: tomato;
+            margin-top: -400px;
+            position: relative;
+            left: 0px;
+            top: 0px;
+            z-index: 5;
+        }
+
+    </style>
+    <script>
+        var n = 0;
+        var score, imgPenalty, area;
+        var timer = 0;
+        var interval = 1500;
+        var vibInterval = 5000;
+        var catno = 1;
+        var penalty = 0;
+        var tlist = [];
+        var tlist2 = [];
+        var temp, temp2;
+        var stat;
+
+        window.onload = function() {
+            score = document.all["score"];
+            imgPenalty = document.all["imgPenalty"];
+            area = document.getElementById("area");
+            stat = document.getElementById("stat");
+            
+            //img1.src = "images/x.png";
+
+            score.value = n;
+
+            setTimeout(function() {
+                stat.style.color = "cornflowerblue";
+                stat.innerText = "Phase A";
+                setTimeout(function() {
+                    timer = setInterval(run, interval);
+                    tlist.push(timer);
+                    stat.style.display = "none";
+                }, 1000);
+            }, 1000);
+            
+        };
+
+
+        function run() {
+            var cat = document.createElement("img");
+            cat.src = "images/catty0" + catno + ".png";
+            cat.style.position = "absolute";
+            cat.style.left = parseInt(Math.random() * 1200) + "px";
+            cat.style.top = parseInt(Math.random() * 500) + "px";
+
+            area.appendChild(cat);
+            temp = setInterval(function() {
+                arguments[0].className = "vibCat";
+                temp2 = setTimeout(function() {
+                    area.removeChild(arguments[0]);
+
+                    imgPenalty[penalty].src = "images/x.png";
+                    penalty++;
+                    if (penalty >= 3) {
+                        for (var i=0; i<tlist.length; i++) {
+                            clearInterval(tlist[i]);
+                        }for (var i=0; i<tlist2.length; i++) {
+                            clearTimeout(tlist2[i]);
+                        }
+                        for (var i=0; i<area.childNodes.length; i++) {
+                            area.childNodes[i].className = "";
+                            area.childNodes[i].onclick = null;
+                        }
+                        document.body.style["-webkit-filter"] = "grayscale(100%)";
+                        document.body.style["filter"] = "gray";
+                    }
+                }, vibInterval, cat);
+                tlist2.push(temp2);
+            }, vibInterval, cat);
+
+            tlist.push(temp);
+
+            cat.onclick = function() {
+                n++;
+                score.value = n;
+                area.removeChild(event.srcElement);
+
+                area.style.backgroundColor = "tomato";
+                setTimeout(function() {
+                    area.style.backgroundColor = "transparent";
+                }, 10);
+
+                if (n == 10) {
+                    clearInterval(timer);
+                    interval -= 300;
+                    vibInterval -= 1000;
+
+                    stat.innerText = "Phase B";
+                    stat.style.display = "block";
+
+                    setTimeout(function() {
+                        timer = setInterval(run, interval);
+                        tlist.push(timer);
+                        stat.style.display = "none";
+                    }, 1000);
+                }
+
+                if (n == 20) {
+                    clearInterval(timer);
+                    interval -= 300;
+                    vibInterval -= 1000;
+                    stat.innerText = "Phase C";
+                    stat.style.display = "block";
+
+                    setTimeout(function() {
+                        timer = setInterval(run, interval);
+                        tlist.push(timer);
+                        stat.style.display = "none";
+                    }, 1000);
+                }
+
+                if (n == 30) {
+                    clearInterval(timer);
+                    interval -= 300;
+                    vibInterval -= 1000;
+                    stat.innerText = "Phase D";
+                    stat.style.display = "block";
+
+                    setTimeout(function() {
+                        timer = setInterval(run, interval);
+                        tlist.push(timer);
+                        stat.style.display = "none";
+                    }, 1000);
+                }
+
+                if (n == 40) {
+                    clearInterval(timer);
+                    interval -= 300;
+                    vibInterval -= 1000;
+                    stat.innerText = "Phase Final";
+                    stat.style.display = "block";
+
+                    setTimeout(function() {
+                        timer = setInterval(run, interval);
+                        tlist.push(timer);
+                        stat.style.display = "none";
+                    }, 1000);
+                }
+
+            };
+
+            catno++;
+            if (catno > 9) catno = 1;
+
+        }
+    </script>
+</head>
+<body onselectstart="return false;" oncontextmenu="return false;" ondragstart="return false;">
+    <h1>Catch Cat</h1>
+    <div id="box">
+        <input type="text" id="score" name="score" readonly>
+        <div id="count">
+            <img class="citem" name="imgPenalty">
+            <img class="citem" name="imgPenalty">
+            <img class="citem" name="imgPenalty">
+	</div>
+	
+    </div>
+    <div id="area">
+
+    </div>
+    <div id="stat">Ready</div>
+
+    
+</body>
+</html>

@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://kit.fontawesome.com/7121714adf.js" crossorigin="anonymous"></script>
+   <link rel="stylesheet" href="../asset/question.css">
+   <title>Document</title>
+	<style>
+		body { background-color: #444; margin-top: 150px; }
+		#box { border: 10px solid black; width: 700px; height: 700px; margin: 50px auto; overflow: hidden; position: relative; left: 0px; top: 0px; background-color: white; border-radius: 50%;}
+		#bar1 { border-top: 3px solid tomato; width: 700px; position: absolute; left: 0px; top: 348px; }
+		#bar2 { border-top: 3px solid tomato; width: 700px; position: absolute; left: 0px; top: 348px; transform: rotate(90deg); }
+	</style>
+	<script>
+		var box;
+		var timer;
+		var cat;
+		var catTimer;
+
+		window.onload = function() {
+
+			box = document.getElementById("box");
+			
+			timer = setTimeout(run, (parseInt(Math.random() * 3) + 3) * 1000);
+
+			
+
+			box.onmousedown = function() {
+				if (parseInt(cat.style.left) >= 222 && parseInt(cat.style.left) <= 345) {
+					box.style.backgroundColor = "rgba(255, 0, 0, .6)";
+					clearInterval(catTimer);
+					clearTimeout(timer);
+				} else {
+					box.style.backgroundColor = "rgba(255, 0, 0, .6)";
+					setTimeout(function() {
+						box.style.backgroundColor = "white";
+					}, 100);
+				}
+			};
+		};
+
+		function run() {
+
+			if (cat != null) {
+				box.removeChild(cat);
+				clearInterval(catTimer);
+			}
+
+			cat = document.createElement("img");
+			cat.src = "images/catty0" + (parseInt(Math.random() * 9) + 1) + ".png";
+			cat.style.position = "relative";
+			cat.style.left = "-130px";
+			cat.style.top = "286px";
+			box.appendChild(cat);
+
+			catTimer = setInterval(function() {
+				cat.style.left = parseInt(cat.style.left) + 10 + "px";
+			}, parseInt(Math.random() * 30));
+
+
+			timer = setTimeout(run, (parseInt(Math.random() * 3) + 3) * 1000);
+		}
+
+	</script>
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+	<div id="box">
+		<div id="bar1"></div>
+		<div id="bar2"></div>
+	</div>
+</body>
+</html>
